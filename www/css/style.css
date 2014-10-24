@@ -1,5 +1,23 @@
 /* Empty. Add your own CSS if you like */
 
+.aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aligner-item {
+    max-width: 50%;
+}
+
+.aligner-item--top {
+    align-self: flex-start;
+}
+
+.aligner-item--bottom {
+    align-self: flex-end;
+}
+
 /* menu */
 .dark {
     background-color: #3f4041 !important;

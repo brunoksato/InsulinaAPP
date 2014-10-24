@@ -12,7 +12,23 @@ function AppCtrl($scope) {
 }
 
 function HomeCtrl($scope) {
-
+    $scope.glicemia = [
+        {
+            nome: 150,
+            data: '20/10/2014',
+            hora: '08:00'
+        },
+        {
+            nome: 100,
+            data: '20/10/2014',
+            hora: '12:00'
+        },
+        {
+            nome: 150,
+            data: '20/10/2014',
+            hora: '20:00'
+        }
+    ];
 }
 
 function GlicemiaCtrl($scope) {
