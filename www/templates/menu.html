@@ -8,23 +8,29 @@
   </ion-pane>
 
   <ion-side-menu side="left">
-    <header class="bar bar-header bar-stable">
-      <h1 class="title">Left</h1>
+    <header class="bar bar-header bar-stable bar-dark">
+      <h1 class="title">Menu</h1>
     </header>
-    <ion-content class="has-header">
+    <ion-content class="has-header dark">
       <ion-list>
-        <ion-item nav-clear menu-close ng-click="login()">
-          Login
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/search">
-          Search
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/browse">
-          Browse
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/playlists">
-          Playlists
-        </ion-item>
+        <a class="item" nav-clear menu-close href="#/app/home">
+          Home
+        </a>
+        <a class="item" nav-clear menu-close href="#/app/glicemia">
+          Glicemia
+        </a>
+        <a class="item" nav-clear menu-close href="#/app/insulinaRapida">
+          Insulina Rapida
+        </a>
+        <a class="item" nav-clear menu-close href="#/app/insulinaBasal">
+          Insulina Basal
+        </a>
+        <a class="item" nav-clear menu-close href="#/app/grafico">
+          Grafico
+        </a>
+        <a class="item" nav-clear menu-close href="#/app/a1c">
+          A1C
+        </a>
       </ion-list>
     </ion-content>
   </ion-side-menu>
