@@ -1,7 +1,7 @@
 
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $cordovaSQLite) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -9,6 +9,14 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+
+      var db = window.sqlitePlugin.openDatabase({name: "insulina.db"});
+      db.transaction(function(tx) {
+        tx.executeSql("INSERT INTO Paciente (Id, Nome) VALUES (?,?)", [3, "Ola"], function(tx, res) {
+          console.log("insertId: " + res.insertId + " -- probably 1");
+          console.log("rowsAffected: " + res.rowsAffected + " -- should be 1");
+        });
+    });
   });
 })
 
@@ -32,6 +40,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
             }
         }
     })
+
+
+      .state('app.paciente', {
+        url: "/paciente",
+        views: {
+          'menuContent' :{
+            templateUrl: "templates/paciente.html",
+            controller: "PacienteCtrl"
+          }
+        }
+      })
 
     .state('app.glicemia', {
       url: "/glicemia",
@@ -83,7 +102,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     });
 
 
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/home');
 
 });
 
