@@ -1,23 +1,26 @@
-<ion-view title="Insulina Basal">
+<ion-view title="Insulina Basal" hide-back-button="true">
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
     <ion-content class="has-header">
         <div class="list">
             <label class="item item-input">
-                <input type="text" placeholder="Quantidade">
+                <input type="text" placeholder="Quantidade" ng-model="basal.quantidade">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Quantidade Cho" ng-model="basal.quantidadeCho">
             </label>
         </div>
         <div class="row aligner">
             <div class="aligner-item">
                 <div class="col col-10">
-                    <button class="button button-energized">
+                    <button class="button button-energized" ng-click="salvar()">
                         Gravar
                     </button>
                 </div>
             </div>
             <div class="col col-10">
-                <button class="button button-light">
+                <button class="button button-light" ng-click="clear()">
                     Limpar
                 </button>
             </div>

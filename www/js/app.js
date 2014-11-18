@@ -1,7 +1,7 @@
 
-angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
+angular.module('starter', ['ionic', 'ngCordova','DAO', 'starter.controllers'])
 
-.run(function($ionicPlatform, $cordovaSQLite) {
+.run(function($ionicPlatform,DAO) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -10,14 +10,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
       StatusBar.styleDefault();
     }
 
-      var db = window.sqlitePlugin.openDatabase({name: "insulina.db"});
-      db.transaction(function(tx) {
-        tx.executeSql("INSERT INTO Paciente (Id, Nome) VALUES (?,?)", [3, "Ola"], function(tx, res) {
-          console.log("insertId: " + res.insertId + " -- probably 1");
-          console.log("rowsAffected: " + res.rowsAffected + " -- should be 1");
-        });
-    });
+
   });
+
+      DAO.connect();
 })
 
 .config(function($stateProvider, $urlRouterProvider) {

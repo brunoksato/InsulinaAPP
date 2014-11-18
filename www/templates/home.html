@@ -1,4 +1,4 @@
-<ion-view title="Home">
+<ion-view title="Home" hide-back-button="true">
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
@@ -7,14 +7,14 @@
         <div class="container">
             <table class="table table-hover table-striped table-responsive" style="border: 1px solid #eee">
                 <tr>
-                    <th>Glicemia</th>
                     <th>Data</th>
-                    <th>Hora</th>
+                    <th>Glicemia</th>
+                    <th>Observacao</th>
                 </tr>
                 <tr ng-repeat="item in glicemia">
-                    <td>{{item.nome}}</td>
                     <td>{{item.data}}</td>
-                    <td>{{item.hora}}</td>
+                    <td>{{item.valor}}</td>
+                    <td>{{item.observacao}}</td>
                 </tr>
             </table>
         </div>
