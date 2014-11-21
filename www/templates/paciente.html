@@ -5,36 +5,55 @@
     <ion-content class="has-header">
         <div class="list">
             <label class="item item-input">
-                <input type="text" placeholder="Nome" ng-model="data.Nome">
+                Nome: <br/>
+                <input type="text" placeholder="" ng-model="data.Nome">
             </label>
             <label class="item item-input">
-                <input type="date" placeholder="Data Nascimento" ng-model="data.Dt_Nasc">
+                Nascimento: <br/>
+                <input type="date" placeholder=" " ng-model="data.Dt_Nasc">
             </label>
             <label class="item item-input">
-                <input type="number" placeholder="Tp_Dm" ng-model="data.Tp_dm">
+                Tipo-DM: <br/>
+                <select>
+                    <option>DM1</option>
+                    <option>DM2</option>
+                    <option>Gestacional</option>
+                </select>
+            </label>
+            <!--<label class="item item-input">-->
+                <!--TP-DM: <br/>-->
+                <!--<input type="number" placeholder=" DM1 / DM2 / Gest." ng-model="data.Tp_dm">-->
+            <!--</label>-->
+            <label class="item item-input">
+                Peso: <br/>
+                <input type="number" placeholder=" KG" ng-model="data.Peso">
             </label>
             <label class="item item-input">
-                <input type="number" placeholder="Peso" ng-model="data.Peso">
-            </label>
-            <label class="item item-input">
+                Altura: <br/>
                 <input type="number" placeholder="Altura" ng-model="data.Altura">
             </label>
             <label class="item item-input">
+                Inicio: <br/>
                 <input type="date" placeholder="Data Inicio" ng-model="data.Dt_Inicio_dm">
             </label>
             <label class="item item-input">
+                Insulina Rápida: <br/>
                 <input type="number" placeholder="Insulina Rapida" ng-model="data.Insulina_Rapida">
             </label>
             <label class="item item-input">
+                Insulina Basal: <br/>
                 <input type="number" placeholder="Insulina Basal" ng-model="data.Insulina_basal">
             </label>
             <label class="item item-input">
+                Fator Correção: <br/>
                 <input type="number" placeholder="Fator Correção" ng-model="data.Fator_Correcao">
             </label>
             <label class="item item-input">
+                Glicemia ideal: <br/>
                 <input type="number" placeholder="Glicemia Ideal" ng-model="data.Glicemia_Ideal">
             </label>
             <label class="item item-input">
+                Insulina CHO: <br/>
                 <input type="number" placeholder="Insulina Cho" ng-model="data.Insulina_Cho">
             </label>
         </div>

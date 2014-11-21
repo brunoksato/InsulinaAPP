@@ -6,16 +6,21 @@
 
       <div class="list">
           <label class="item item-input">
-              <input type="text" placeholder="Valor" ng-model="glicemia.valor">
+              Valor: <br />
+              <input type="number" placeholder="Valor" ng-model="glicemia.valor">
           </label>
           <label class="item item-input">
-              <input type="text" placeholder="Observacao" ng-model="glicemia.observacao">
+              Motivo: <br />
+              <select ng-model="glicemia.motivo.id" ng-options="motivo.id as motivo.Nome for motivo in motivos"></select>
           </label>
+          <!--<label class="item item-input">-->
+              <!--<input type="text" placeholder="Observacao" ng-model="glicemia.observacao">-->
+          <!--</label>-->
       </div>
       <div class="row aligner">
           <div class="aligner-item">
               <div class="col col-10">
-                  <button class="button button-energized" ng-click="salvar()">
+                  <button class="button button-positive" ng-click="salvar()">
                      Gravar
                   </button>
               </div>

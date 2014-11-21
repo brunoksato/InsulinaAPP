@@ -1,4 +1,3 @@
-
 angular.module('starter', ['ionic', 'ngCordova','DAO', 'starter.controllers'])
 
 .run(function($ionicPlatform,DAO) {
@@ -86,6 +85,26 @@ angular.module('starter', ['ionic', 'ngCordova','DAO', 'starter.controllers'])
         }
       }
     })
+//Acrescentado
+      .state('app.editar', {
+        url: "/editar",
+        views: {
+          'menuContent' :{
+            templateUrl: "templates/editar.html",
+            controller: 'EditarCtrl'
+          }
+        }
+      })
+
+      .state('app.observacao', {
+          url: "/observacao",
+          views: {
+              'menuContent' :{
+                  templateUrl: "templates/observacao.html",
+                  controller: 'ObservacaoCtrl'
+              }
+          }
+      })
 
     .state('app.a1c', {
         url: "/a1c",
@@ -101,4 +120,30 @@ angular.module('starter', ['ionic', 'ngCordova','DAO', 'starter.controllers'])
   $urlRouterProvider.otherwise('/app/home');
 
 });
+
+Date.prototype.getData = function () {
+    var dia = this.getDate();
+    dia = dia < 10 ? "0" + dia : dia.toString();
+    var mes = this.getMonth() + 1;
+    mes = mes < 10 ? "0" + mes : mes.toString();
+    return dia + "/" + mes + "/" + this.getFullYear();
+}
+
+Object.prototype.clone = function() {
+    if (this == null) return null;
+    if (typeof(this) !== "object") return null;
+    var cloned = {};
+    for (attr in this) {
+        cloned[attr] = this[attr];
+    }
+    return cloned;
+}
+
+Date.prototype.getHora = function () {
+    return this.getHours() + ":" + this.getMinutes();
+}
+
+Date.prototype.getDataEHora = function () {
+    return this.Data() + "|" + this.getHora();
+}
 

@@ -1,6 +1,8 @@
 /**
  * Created by Bruno on 14/11/2014.
  */
+_DAO = {err:{}, data: {}};
+
 angular.module('DAO', [])
     .service('DAO', DAO)
     .factory('DAOFactory', DAOFactory);
@@ -22,6 +24,7 @@ function DAO() {
                 //var db = window.sqlitePlugin.openDatabase({name: shortName});
                 this.db = openDatabase(shortName,version,displayName,maxSize);
                 this.create();
+
                 if(!this.db){
                     console.error('Erro ao criar banco!');
                 }
@@ -67,6 +70,20 @@ function DAO() {
 
             tx.executeSql(
                 [
+                    'INSERT INTO [Paciente] (',
+                    '[Nome],[Dt_Nasc],[Tp_dm],',
+                    '[Peso],[Altura],[Dt_Inicio_dm],',
+                    '[Insulina_Rapida],[Insulina_basal],[Fator_Correcao],',
+                    '[Glicemia_Ideal],[Insulina_Cho])',
+                    'VALUES ( ?,?,?,?,?,?,?,?,?,?,?)'
+                ].join(''),
+                ['','','','','','','','','','',''],
+                function ok() {console.info('salvo default');},
+                function err(a,err) {console.warn(err); DAOERR.err = err;}
+            );
+
+            tx.executeSql(
+                [
                     'CREATE TABLE [Tipo_Insulina] (',
                     '[Id] Integer NOT NULL Primary Key autoincrement,',
                     '[Descricao] VARCHAR(200));'
@@ -105,7 +122,17 @@ function DAO() {
                     '[Id_Paciente] integer CONSTRAINT [Fk_Paciente] REFERENCES [Paciente]([Id]));'
             ].join('')
             )
+
+            tx.executeSql(
+                'SELECT COUNT(*) FROM PACIENTE',[],
+                function (tx,r) {_DAO.data = r;}
+            );
+
+            //initi();
         });
+
+
+        //
     };
 
     this.drop = function () {
