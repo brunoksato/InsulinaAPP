@@ -14,7 +14,7 @@
                 </tr>
                 <tr ng-repeat="item in editar" ng-click="select(item);" ng-class="{'selected' : item.$edit}">
                     <td>
-                        {{item.Data | date : 'hh:mm'}}
+                        {{item.Data | date : 'HH:mm'}}
                     </td>
                     <td>
                         <span ng-if="!item.$edit">
