@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c07a7ba-f88f-4bc4-b029-4ddf432a2f89" name="Default" comment="" />
+    <list default="true" id="1c07a7ba-f88f-4bc4-b029-4ddf432a2f89" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/EA.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/editar.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/observacao.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/DAO.js" afterPath="$PROJECT_DIR$/www/js/DAO.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/a1c.html" afterPath="$PROJECT_DIR$/www/templates/a1c.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers.js" afterPath="$PROJECT_DIR$/www/js/controllers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="InsulinaAPP.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,112 +35,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2162" max-vertical-offset="2771">
-              <caret line="0" column="76" selection-start-line="0" selection-start-column="76" selection-end-line="0" selection-end-column="76" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DAO.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/DAO.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="995" max-vertical-offset="3383">
-              <caret line="115" column="35" selection-start-line="115" selection-start-column="35" selection-end-line="115" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.20274915" vertical-offset="1" max-vertical-offset="2091">
-              <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1988" max-vertical-offset="3145">
+              <caret line="164" column="44" selection-start-line="164" selection-start-column="44" selection-end-line="164" selection-end-column="44" />
               <folding>
-                <element signature="n#!!block;n#AppCtrl#0" expanded="false" />
-                <element signature="e#930#1138#0" expanded="false" />
-                <element signature="e#1356#1789#0" expanded="false" />
-                <element signature="e#1845#2361#0" expanded="false" />
-                <element signature="e#1888#2353#0" expanded="false" />
-                <element signature="e#1993#2232#0" expanded="false" />
-                <element signature="e#2040#2131#0" expanded="false" />
-                <element signature="e#2269#2328#0" expanded="false" />
-                <element signature="e#2395#3441#0" expanded="false" />
-                <element signature="e#2439#3433#0" expanded="false" />
-                <element signature="e#2675#3126#0" expanded="false" />
-                <element signature="e#3151#3352#0" expanded="false" />
-                <element signature="e#3280#3337#0" expanded="false" />
-                <element signature="e#3372#3421#0" expanded="false" />
-                <element signature="e#4096#4184#0" expanded="false" />
-                <element signature="e#4678#4844#0" expanded="false" />
-                <element signature="e#4774#4829#0" expanded="false" />
-                <element signature="e#4861#4910#0" expanded="false" />
-                <element signature="n#!!block;n#InsulinaRapidaCtrl#0" expanded="false" />
-                <element signature="e#5033#5125#0" expanded="false" />
-                <element signature="e#5192#5895#0" expanded="false" />
-                <element signature="e#5235#5887#0" expanded="false" />
-                <element signature="e#5418#5616#0" expanded="false" />
-                <element signature="e#5641#5806#0" expanded="false" />
-                <element signature="e#5736#5791#0" expanded="false" />
-                <element signature="e#5826#5875#0" expanded="false" />
-                <element signature="n#!!block;n#InsulinaBasalCtrl#0" expanded="false" />
-                <element signature="n#!!block;n#GraficoCtrl#0" expanded="false" />
-                <element signature="n#!!block;n#A1CCtrl#0" expanded="false" />
-                <element signature="e#7152#8535#0" expanded="false" />
-                <element signature="e#7303#8527#0" expanded="false" />
-                <element signature="e#7623#8461#0" expanded="false" />
-                <element signature="e#7782#7918#0" expanded="false" />
-                <element signature="e#7997#8445#0" expanded="false" />
-                <element signature="e#8058#8341#0" expanded="false" />
-                <element signature="e#8141#8319#0" expanded="false" />
-                <element signature="e#8555#8860#0" expanded="false" />
-                <element signature="e#9193#9534#0" expanded="false" />
-                <element signature="e#9251#9501#0" expanded="false" />
-                <element signature="e#9574#9659#0" expanded="false" />
+                <element signature="e#1153#1347#0" expanded="false" />
+                <element signature="e#1562#2143#0" expanded="false" />
+                <element signature="e#2350#2540#0" expanded="false" />
+                <element signature="e#2752#3238#0" expanded="false" />
+                <element signature="e#3967#4614#0" expanded="false" />
+                <element signature="e#4820#5177#0" expanded="false" />
+                <element signature="e#5422#5616#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/home.html">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="476">
-              <caret line="13" column="46" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2462" max-vertical-offset="3553">
+              <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/index.html">
+      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="629">
-              <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="4148" max-vertical-offset="6477">
+              <caret line="265" column="25" selection-start-line="265" selection-start-column="25" selection-end-line="265" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="a1c.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="a1c.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/templates/a1c.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="595">
-              <caret line="10" column="79" selection-start-line="10" selection-start-column="79" selection-end-line="10" selection-end-column="79" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="glicemia.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/glicemia.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.461538" vertical-offset="18" max-vertical-offset="731">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5344353" vertical-offset="27" max-vertical-offset="612">
+              <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -143,6 +91,12 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Eliézer" />
+        <option value="Eli" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -153,21 +107,23 @@
         <option value="$PROJECT_DIR$/platforms/android/res/xml/config.xml" />
         <option value="$PROJECT_DIR$/www/templates/grafico.html" />
         <option value="$PROJECT_DIR$/config.xml" />
-        <option value="$PROJECT_DIR$/www/templates/a1c.html" />
         <option value="$PROJECT_DIR$/www/config.xml" />
         <option value="$PROJECT_DIR$/www/templates/insulinaBasal.html" />
         <option value="$PROJECT_DIR$/www/templates/insulinaRapida.html" />
-        <option value="$PROJECT_DIR$/www/templates/editar.html" />
         <option value="$PROJECT_DIR$/www/templates/menu.html" />
         <option value="$PROJECT_DIR$/www/templates/observacao.html" />
         <option value="$PROJECT_DIR$/www/templates/paciente.html" />
-        <option value="$PROJECT_DIR$/www/js/app.js" />
         <option value="$PROJECT_DIR$/www/js/services.js" />
         <option value="$PROJECT_DIR$/www/index.html" />
-        <option value="$PROJECT_DIR$/www/templates/glicemia.html" />
-        <option value="$PROJECT_DIR$/www/js/controllers.js" />
         <option value="$PROJECT_DIR$/www/templates/home.html" />
+        <option value="$PROJECT_DIR$/www/css/bootstrap-table.css" />
+        <option value="$PROJECT_DIR$/www/css/style.css" />
+        <option value="$PROJECT_DIR$/www/templates/glicemia.html" />
         <option value="$PROJECT_DIR$/www/js/DAO.js" />
+        <option value="$PROJECT_DIR$/www/templates/editar.html" />
+        <option value="$PROJECT_DIR$/www/js/app.js" />
+        <option value="$PROJECT_DIR$/www/js/controllers.js" />
+        <option value="$PROJECT_DIR$/www/templates/a1c.html" />
       </list>
     </option>
   </component>
@@ -245,7 +201,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="InsulinaAPP-master" />
+              <option name="myItemId" value="InsulinaAPP" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -255,7 +211,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="InsulinaAPP-master" />
+              <option name="myItemId" value="InsulinaAPP" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -269,7 +225,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="InsulinaAPP-master" />
+              <option name="myItemId" value="InsulinaAPP" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -287,7 +243,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="InsulinaAPP-master" />
+              <option name="myItemId" value="InsulinaAPP" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -304,16 +260,17 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/www/index.html" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
-    <property name="options.lastSelected" value="web.server" />
+    <property name="options.lastSelected" value="settings.github" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="full.screen.before.presentation.mode" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -377,7 +334,7 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/InsulinaAPP/www/index.html">
+    <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:1537/InsulinaAPP/www/index.html">
       <RunnerSettings RunnerId="JavascriptDebugRunner" />
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
       <method />
@@ -397,33 +354,61 @@
       <option name="number" value="Default" />
       <updated>1414150268144</updated>
     </task>
+    <task id="LOCAL-00001" summary="Correções tela Editar">
+      <created>1416675454957</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1416675454957</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32822084" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279743" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20272315" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38263667" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38102895" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38263667" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38263667" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279743" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329582" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14977308" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32713178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39689922" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39689922" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -442,14 +427,25 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
+    <MESSAGE value="Correções tela Editar" />
+    <MESSAGE value="Correções tela Editar/A1C" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correções tela Editar/A1C" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/www/templates/glicemia.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="731">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/paciente.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="1037">
@@ -483,48 +479,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="1615">
           <caret line="36" column="33" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
-          <folding>
-            <element signature="n#!!block;n#AppCtrl#0" expanded="false" />
-            <element signature="e#930#1138#0" expanded="false" />
-            <element signature="e#1356#1789#0" expanded="false" />
-            <element signature="e#1845#2361#0" expanded="false" />
-            <element signature="e#1888#2353#0" expanded="false" />
-            <element signature="e#1993#2232#0" expanded="false" />
-            <element signature="e#2040#2131#0" expanded="false" />
-            <element signature="e#2269#2328#0" expanded="false" />
-            <element signature="e#2395#3441#0" expanded="false" />
-            <element signature="e#2439#3433#0" expanded="false" />
-            <element signature="e#2675#3126#0" expanded="false" />
-            <element signature="e#3151#3352#0" expanded="false" />
-            <element signature="e#3280#3337#0" expanded="false" />
-            <element signature="e#3372#3421#0" expanded="false" />
-            <element signature="e#4096#4184#0" expanded="false" />
-            <element signature="e#4678#4844#0" expanded="false" />
-            <element signature="e#4774#4829#0" expanded="false" />
-            <element signature="e#4861#4910#0" expanded="false" />
-            <element signature="n#!!block;n#InsulinaRapidaCtrl#0" expanded="false" />
-            <element signature="e#5033#5125#0" expanded="false" />
-            <element signature="e#5192#5895#0" expanded="false" />
-            <element signature="e#5235#5887#0" expanded="false" />
-            <element signature="e#5418#5616#0" expanded="false" />
-            <element signature="e#5641#5806#0" expanded="false" />
-            <element signature="e#5736#5791#0" expanded="false" />
-            <element signature="e#5826#5875#0" expanded="false" />
-            <element signature="n#!!block;n#InsulinaBasalCtrl#0" expanded="false" />
-            <element signature="n#!!block;n#GraficoCtrl#0" expanded="false" />
-            <element signature="n#!!block;n#A1CCtrl#0" expanded="false" />
-            <element signature="e#7152#8535#0" expanded="false" />
-            <element signature="e#7303#8527#0" expanded="false" />
-            <element signature="e#7623#8461#0" expanded="false" />
-            <element signature="e#7782#7918#0" expanded="false" />
-            <element signature="e#7997#8445#0" expanded="false" />
-            <element signature="e#8058#8341#0" expanded="false" />
-            <element signature="e#8141#8319#0" expanded="false" />
-            <element signature="e#8555#8860#0" expanded="false" />
-            <element signature="e#9193#9534#0" expanded="false" />
-            <element signature="e#9251#9501#0" expanded="false" />
-            <element signature="e#9574#9659#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -554,48 +509,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="1615">
           <caret line="36" column="33" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
-          <folding>
-            <element signature="n#!!block;n#AppCtrl#0" expanded="false" />
-            <element signature="e#930#1138#0" expanded="false" />
-            <element signature="e#1356#1789#0" expanded="false" />
-            <element signature="e#1845#2361#0" expanded="false" />
-            <element signature="e#1888#2353#0" expanded="false" />
-            <element signature="e#1993#2232#0" expanded="false" />
-            <element signature="e#2040#2131#0" expanded="false" />
-            <element signature="e#2269#2328#0" expanded="false" />
-            <element signature="e#2395#3441#0" expanded="false" />
-            <element signature="e#2439#3433#0" expanded="false" />
-            <element signature="e#2675#3126#0" expanded="false" />
-            <element signature="e#3151#3352#0" expanded="false" />
-            <element signature="e#3280#3337#0" expanded="false" />
-            <element signature="e#3372#3421#0" expanded="false" />
-            <element signature="e#4096#4184#0" expanded="false" />
-            <element signature="e#4678#4844#0" expanded="false" />
-            <element signature="e#4774#4829#0" expanded="false" />
-            <element signature="e#4861#4910#0" expanded="false" />
-            <element signature="n#!!block;n#InsulinaRapidaCtrl#0" expanded="false" />
-            <element signature="e#5033#5125#0" expanded="false" />
-            <element signature="e#5192#5895#0" expanded="false" />
-            <element signature="e#5235#5887#0" expanded="false" />
-            <element signature="e#5418#5616#0" expanded="false" />
-            <element signature="e#5641#5806#0" expanded="false" />
-            <element signature="e#5736#5791#0" expanded="false" />
-            <element signature="e#5826#5875#0" expanded="false" />
-            <element signature="n#!!block;n#InsulinaBasalCtrl#0" expanded="false" />
-            <element signature="n#!!block;n#GraficoCtrl#0" expanded="false" />
-            <element signature="n#!!block;n#A1CCtrl#0" expanded="false" />
-            <element signature="e#7152#8535#0" expanded="false" />
-            <element signature="e#7303#8527#0" expanded="false" />
-            <element signature="e#7623#8461#0" expanded="false" />
-            <element signature="e#7782#7918#0" expanded="false" />
-            <element signature="e#7997#8445#0" expanded="false" />
-            <element signature="e#8058#8341#0" expanded="false" />
-            <element signature="e#8141#8319#0" expanded="false" />
-            <element signature="e#8555#8860#0" expanded="false" />
-            <element signature="e#9193#9534#0" expanded="false" />
-            <element signature="e#9251#9501#0" expanded="false" />
-            <element signature="e#9574#9659#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -625,48 +539,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1615">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!block;n#AppCtrl#0" expanded="false" />
-            <element signature="e#930#1138#0" expanded="false" />
-            <element signature="e#1356#1789#0" expanded="false" />
-            <element signature="e#1845#2361#0" expanded="false" />
-            <element signature="e#1888#2353#0" expanded="false" />
-            <element signature="e#1993#2232#0" expanded="false" />
-            <element signature="e#2040#2131#0" expanded="false" />
-            <element signature="e#2269#2328#0" expanded="false" />
-            <element signature="e#2395#3441#0" expanded="false" />
-            <element signature="e#2439#3433#0" expanded="false" />
-            <element signature="e#2675#3126#0" expanded="false" />
-            <element signature="e#3151#3352#0" expanded="false" />
-            <element signature="e#3280#3337#0" expanded="false" />
-            <element signature="e#3372#3421#0" expanded="false" />
-            <element signature="e#4096#4184#0" expanded="false" />
-            <element signature="e#4678#4844#0" expanded="false" />
-            <element signature="e#4774#4829#0" expanded="false" />
-            <element signature="e#4861#4910#0" expanded="false" />
-            <element signature="n#!!block;n#InsulinaRapidaCtrl#0" expanded="false" />
-            <element signature="e#5033#5125#0" expanded="false" />
-            <element signature="e#5192#5895#0" expanded="false" />
-            <element signature="e#5235#5887#0" expanded="false" />
-            <element signature="e#5418#5616#0" expanded="false" />
-            <element signature="e#5641#5806#0" expanded="false" />
-            <element signature="e#5736#5791#0" expanded="false" />
-            <element signature="e#5826#5875#0" expanded="false" />
-            <element signature="n#!!block;n#InsulinaBasalCtrl#0" expanded="false" />
-            <element signature="n#!!block;n#GraficoCtrl#0" expanded="false" />
-            <element signature="n#!!block;n#A1CCtrl#0" expanded="false" />
-            <element signature="e#7152#8535#0" expanded="false" />
-            <element signature="e#7303#8527#0" expanded="false" />
-            <element signature="e#7623#8461#0" expanded="false" />
-            <element signature="e#7782#7918#0" expanded="false" />
-            <element signature="e#7997#8445#0" expanded="false" />
-            <element signature="e#8058#8341#0" expanded="false" />
-            <element signature="e#8141#8319#0" expanded="false" />
-            <element signature="e#8555#8860#0" expanded="false" />
-            <element signature="e#9193#9534#0" expanded="false" />
-            <element signature="e#9251#9501#0" expanded="false" />
-            <element signature="e#9574#9659#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -740,24 +613,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/css/bootstrap-table.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.91099477" vertical-offset="9325" max-vertical-offset="9775">
-          <caret line="569" column="0" selection-start-line="569" selection-start-column="0" selection-end-line="569" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4753915" vertical-offset="0" max-vertical-offset="894">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1088">
-          <caret line="0" column="21" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -844,19 +703,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/paciente.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.076923" vertical-offset="146" max-vertical-offset="1360">
-          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/menu.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.423077" vertical-offset="9" max-vertical-offset="884">
           <caret line="18" column="75" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="75" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -864,112 +714,102 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.5071943" vertical-offset="1785" max-vertical-offset="3842">
           <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/editar.html">
+    <entry file="file://$PROJECT_DIR$/www/css/bootstrap-table.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.769231" vertical-offset="69" max-vertical-offset="663">
-          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2162" max-vertical-offset="2771">
-          <caret line="0" column="76" selection-start-line="0" selection-start-column="76" selection-end-line="0" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="629">
-          <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/a1c.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="595">
-          <caret line="10" column="79" selection-start-line="10" selection-start-column="79" selection-end-line="10" selection-end-column="79" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="244" max-vertical-offset="9775">
+          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/glicemia.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.461538" vertical-offset="18" max-vertical-offset="731">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.66192734" vertical-offset="340" max-vertical-offset="1419">
+          <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.96366507" vertical-offset="116" max-vertical-offset="1221">
+          <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="476">
-          <caret line="13" column="46" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.19747235" vertical-offset="291" max-vertical-offset="924">
+          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/paciente.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1360">
+          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/editar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47927928" vertical-offset="261" max-vertical-offset="816">
+          <caret line="31" column="184" selection-start-line="31" selection-start-column="184" selection-end-line="31" selection-end-column="184" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/DAO.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="995" max-vertical-offset="3383">
-          <caret line="115" column="35" selection-start-line="115" selection-start-column="35" selection-end-line="115" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1631" max-vertical-offset="3145">
+          <caret line="164" column="44" selection-start-line="164" selection-start-column="44" selection-end-line="164" selection-end-column="44" />
+          <folding>
+            <element signature="e#1153#1347#0" expanded="false" />
+            <element signature="e#1562#2143#0" expanded="false" />
+            <element signature="e#2350#2540#0" expanded="false" />
+            <element signature="e#2752#3238#0" expanded="false" />
+            <element signature="e#3967#4614#0" expanded="false" />
+            <element signature="e#4820#5177#0" expanded="false" />
+            <element signature="e#5422#5616#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2462" max-vertical-offset="3553">
+          <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20274915" vertical-offset="1" max-vertical-offset="2091">
-          <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
-          <folding>
-            <element signature="n#!!block;n#AppCtrl#0" expanded="false" />
-            <element signature="e#930#1138#0" expanded="false" />
-            <element signature="e#1356#1789#0" expanded="false" />
-            <element signature="e#1845#2361#0" expanded="false" />
-            <element signature="e#1888#2353#0" expanded="false" />
-            <element signature="e#1993#2232#0" expanded="false" />
-            <element signature="e#2040#2131#0" expanded="false" />
-            <element signature="e#2269#2328#0" expanded="false" />
-            <element signature="e#2395#3441#0" expanded="false" />
-            <element signature="e#2439#3433#0" expanded="false" />
-            <element signature="e#2675#3126#0" expanded="false" />
-            <element signature="e#3151#3352#0" expanded="false" />
-            <element signature="e#3280#3337#0" expanded="false" />
-            <element signature="e#3372#3421#0" expanded="false" />
-            <element signature="e#4096#4184#0" expanded="false" />
-            <element signature="e#4678#4844#0" expanded="false" />
-            <element signature="e#4774#4829#0" expanded="false" />
-            <element signature="e#4861#4910#0" expanded="false" />
-            <element signature="n#!!block;n#InsulinaRapidaCtrl#0" expanded="false" />
-            <element signature="e#5033#5125#0" expanded="false" />
-            <element signature="e#5192#5895#0" expanded="false" />
-            <element signature="e#5235#5887#0" expanded="false" />
-            <element signature="e#5418#5616#0" expanded="false" />
-            <element signature="e#5641#5806#0" expanded="false" />
-            <element signature="e#5736#5791#0" expanded="false" />
-            <element signature="e#5826#5875#0" expanded="false" />
-            <element signature="n#!!block;n#InsulinaBasalCtrl#0" expanded="false" />
-            <element signature="n#!!block;n#GraficoCtrl#0" expanded="false" />
-            <element signature="n#!!block;n#A1CCtrl#0" expanded="false" />
-            <element signature="e#7152#8535#0" expanded="false" />
-            <element signature="e#7303#8527#0" expanded="false" />
-            <element signature="e#7623#8461#0" expanded="false" />
-            <element signature="e#7782#7918#0" expanded="false" />
-            <element signature="e#7997#8445#0" expanded="false" />
-            <element signature="e#8058#8341#0" expanded="false" />
-            <element signature="e#8141#8319#0" expanded="false" />
-            <element signature="e#8555#8860#0" expanded="false" />
-            <element signature="e#9193#9534#0" expanded="false" />
-            <element signature="e#9251#9501#0" expanded="false" />
-            <element signature="e#9574#9659#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="4148" max-vertical-offset="6477">
+          <caret line="265" column="25" selection-start-line="265" selection-start-column="25" selection-end-line="265" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/a1c.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5344353" vertical-offset="27" max-vertical-offset="612">
+          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>

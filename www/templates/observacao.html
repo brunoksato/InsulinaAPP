@@ -1,0 +1,33 @@
+<ion-view title="Glicemia" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+
+      <div class="list">
+          <label class="item item-input">
+              <!--<input type="text" placeholder="Valor" ng-model="observacao.Data">-->
+              <b style="text-align: center; font-size: medium;">{{observacao.Data}}</b>
+          </label>
+          <label class="item item-input">
+              Observação: <br />
+              <input type="text" placeholder="Observação" ng-model="observacao.Texto">
+          </label>
+      </div>
+      <div class="row aligner">
+          <div class="aligner-item">
+              <div class="col col-10">
+                  <button class="button button-positive" ng-click="salvar()">
+                     Gravar
+                  </button>
+              </div>
+          </div>
+          <div class="col col-10">
+              <button class="button button-light" ng-click="clear()">
+                  Limpar
+              </button>
+          </div>
+      </div>
+
+  </ion-content>
+</ion-view>

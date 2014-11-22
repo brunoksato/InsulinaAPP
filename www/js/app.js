@@ -147,27 +147,26 @@ var motivos = [
 ];
 
 Date.prototype.getData = function () {
-    var dia = this.getDate();
-    dia = dia < 10 ? "0" + dia : dia.toString();
-    var mes = this.getMonth() + 1;
-    mes = mes < 10 ? "0" + mes : mes.toString();
-    return dia + "/" + mes + "/" + this.getFullYear();
+    this.dia = this.getDate();
+    this.dia = this.dia < 10 ? "0" + this.dia : this.dia.toString();
+    this.mes = this.getMonth() + 1;
+    this.mes = this.mes < 10 ? "0" + this.mes :this.mes.toString();
+    return this.dia + "/" + this.mes + "/" + this.getFullYear();
 }
 
 Date.prototype.fromInput = function (valor) {
     if (valor == null || valor === 'undefined') {
-        console.warn('Data não definida.');
-        return this;
+        throw new SyntaxError('Data não definida');
     } else {
-        temp = valor.toString().split('-');
-        this.setDate(temp[2]);
-        this.setMonth(parseInt(temp[1]) - 1);
-        this.setFullYear(temp[0]);
+        this.temp = valor.toString().split('-');
+        this.setDate(this.temp[2]);
+        this.setMonth(parseInt(this.temp[1]) - 1);
+        this.setFullYear(this.temp[0]);
     }
     return this;
 }
 
-Date.prototype.getData = function (valor) {
+Date.prototype.getInputData = function (valor) {
     this.fromInput(valor);
     return this.getData();
 }
@@ -175,17 +174,17 @@ Date.prototype.getData = function (valor) {
 Object.prototype.clone = function() {
     if (this == null) return null;
     if (typeof(this) !== "object") return null;
-    var cloned = {};
-    for (attr in this) {
-        cloned[attr] = this[attr];
+    this.cloned = {};
+    for (this.attr in this) {
+        this.cloned[this.attr] = this[this.attr];
     }
-    return cloned;
+    return this.cloned;
 }
 
 Array.prototype.search = function (item) {
     if (typeof(item) === 'object') {
 
-        for (i = 0; i < this.length; i++) {
+        for (this.i = 0; this.i < this.length; this.i++) {
 
             this.check = true;
 
@@ -193,12 +192,12 @@ Array.prototype.search = function (item) {
 
                 if (typeof(item[this.at]) !== 'function') {
 
-                    if (item[this.at] !== (this[i])[this.at]) {
+                    if (item[this.at] !== (this[this.i])[this.at]) {
                         this.check = false;
                     }
                 }
             }
-            if (this.check) return this[i];
+            if (this.check) return this[this.i];
         }
     }
     return this;

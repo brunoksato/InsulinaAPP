@@ -1,0 +1,42 @@
+<ion-view title="Editar" hide-back-button="true">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+        <br/>
+        <div class="container">
+            <b class="text-center center-block">{{ hoje | date : 'dd/MM/yyyy'}}</b>
+            <table class="table table-hover table-striped table-responsive" style="border: 1px solid #eee">
+                <tr>
+                    <th>Data</th>
+                    <th width="70px">Glicemia</th>
+                    <th>Descricao</th>
+                </tr>
+                <tr ng-repeat="item in editar" ng-click="select(item);" ng-class="{'selected' : item.$edit}">
+                    <td>
+                        {{item.Data | date : 'hh:mm'}}
+                    </td>
+                    <td>
+                        <span ng-if="!item.$edit">
+                            {{item.Valor}}
+                        </span>
+                        <span ng-if="item.$edit">
+                            <input type="number" ng-change="item.$change = true; " ng-model="item.Valor">
+                        </span>
+                    </td>
+                    <td>
+                        <span ng-if="!item.$edit">
+                            {{item.motivo.Descricao}}
+                        </span>
+                        <span ng-if="item.$edit">
+                            <select ng-model="item.motivo" ng-change="item.$change = true;" ng-options="motivo as motivo.Descricao for motivo in motivos" ng-init="default.id"></select>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+            <div class="center-block text-center">
+                <button class="button button-positive" ng-click="salvar()">Salvar</button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

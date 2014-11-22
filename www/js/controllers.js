@@ -9,7 +9,7 @@ angular.module('starter.controllers', [])
     .controller('A1CCtrl', A1CCtrl)
     .controller('ObservacaoCtrl', ObservacaoCtrl)
     .controller('EditarCtrl', EditarCtrl);
-var teste = [];
+
 function AppCtrl($scope) {
 
 }
@@ -24,7 +24,6 @@ function HomeCtrl($scope, DAO) {
             function (tx, results) {
             var len = results.rows.length;
             for (var i = 0; i < len; i++){
-                teste.push(results.rows.item(i).clone());
                 $scope.glicemia.push(
                     {
                         Data: results.rows.item(i).Data,
@@ -80,7 +79,6 @@ function PacienteCtrl($scope, DAO) {
     $scope.gravar = function () {
 
         DAO.db.transaction(function (tx) {
-            console.log($scope.data);
             tx.executeSql("UPDATE paciente set Nome=?,Dt_Nasc=?,Tp_dm=?, Peso=?, Altura=?, Dt_Inicio_dm=?, Insulina_Rapida=?, Insulina_basal=?, Fator_Correcao=?, Glicemia_Ideal=?, Insulina_Cho=?",[
                 $scope.data.Nome,
                 $scope.data.Dt_Nasc,
@@ -134,10 +132,9 @@ function GlicemiaCtrl($scope, DAO) {
     $scope.salvar = function () {
         DAO.db.transaction(function (tx) {
             var agora = new Date();
-            tx.executeSql("INSERT INTO medicao(Data,Valor,Observacao,Id_MotivoMedicao,Id_Paciente) Values (?,?,?,?,?)",[
+            tx.executeSql("INSERT INTO medicao(Data,Valor,Id_MotivoMedicao,Id_Paciente) Values (?,?,?,?)",[
                 agora.toISOString(),
                 $scope.glicemia.valor,
-                $scope.glicemia.observacao,
                 $scope.glicemia.motivo.id,
                 1
             ], function (tx, results) {
@@ -146,7 +143,7 @@ function GlicemiaCtrl($scope, DAO) {
                 $scope.$apply(function () {
                     $scope.clear();
                 })
-            }, function (err) {
+            }, function (tx,err) {
                 console.log(err);
             });
         });
@@ -220,44 +217,58 @@ function InsulinaBasalCtrl($scope, DAO) {
     };
 }
 
-function GraficoCtrl($scope) {
-
+function GraficoCtrl($scope, DAO) {
+    $scope.getData = function () {
+        DAO.db.transaction(
+            function (tx) {
+                tx.executeSql(
+                    'SELECT [valor] FROM [medicao] m' +
+                    'JOIN [motivo_medicao] mm ON m.id_Motivomedicao = mm.Id' +
+                    ' WHERE [descricao] = "JEJUM"'
+                    ,[]
+                );
+            }
+        );
+    }
 }
 
 function A1CCtrl($scope, DAO) {
 
     $scope.show = false;
-    $scope.a1c = {dataInicial:{}, dataFinal: {} };
+    $scope.a1c = {dataInicial:'2014-11-01', dataFinal: '2014-11-30', erro: false };
 
     $scope.calcular = function () {
-        var inicio = new Date();
-        var final = new Date();
-        inicio.fromInput().toDateString();
+        var data = new Date();
+        var inicio = data.getInputData($scope.a1c.dataInicial);
+        var final = data.getInputData($scope.a1c.dataFinal);
         DAO.db.transaction(function (tx) {
             tx.executeSql("SELECT * FROM Aplicacao WHERE strftime('%d/%m/%Y',data) >= ? and ? <= strftime('%d/%m/%Y',data) ",
                 [
-                    inicio.getData($scope.a1c.dataInicial)
-                    ,final.getData($scope.a1c.dataFinal)
+                    inicio
+                    ,final
                 ],
                 function (tx, results) {
-                    console.info(results.rows.length);
                 var len = results.rows.length, soma = 0;
                 for (var i = 0; i < len; i++){
-                    console.log(results.rows.item(i));
                     soma += results.rows.item(i).Quantidade;
 
                 }
                 media = soma / len;
                 $scope.$apply(function () {
-                    for (i = 0; i < tabelaA1C.length; i++) {
-                        if (media <= tabelaA1C[i].media)
-                        {
-                            $scope.a1c.valor =  tabelaA1C[i].valor;
-                            tabelaA1C[i].media;
-                            break;
+                    if (len > 0) {
+                        for (i = 0; i < tabelaA1C.length; i++) {
+                            if (media <= tabelaA1C[i].media)
+                            {
+                                $scope.a1c.valor =  tabelaA1C[i].valor;
+                                tabelaA1C[i].media;
+                                break;
+                            }
                         }
+                        $scope.a1c.media = media;
+                    } else {
+                        $scope.a1c.erro = 'Nenhum registro!';
                     }
-                    $scope.a1c.media = media;
+
                     $scope.show = true;
                 });
             }, function (tx,err) {console.warn(err);}
@@ -303,19 +314,19 @@ function EditarCtrl($scope, DAO) {
             }
 
             $scope.$apply(function () {
-                //$scope.editar =
                 $scope.show = true;
             });
 
         },
         function (tx,err) {
-            console.warn(err);
+            console.warn(tx,err);
         }
         );
     });
 
     $scope.select = function (item) {
-        item.$edit = true;
+
+        item.$edit = !item.$edit;
         for (var i = 0 ; i < $scope.editar.length; i++) {
             if (item.Id !== $scope.editar[i].Id) {
                 $scope.editar[i].$edit = false;

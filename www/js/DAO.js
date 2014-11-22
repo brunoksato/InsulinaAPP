@@ -22,6 +22,7 @@ function DAO() {
             } else {
                 //var db = window.sqlitePlugin.openDatabase({name: shortName});
                 this.db = openDatabase(shortName,version,displayName,maxSize);
+                this.drop();
                 this.create();
 
                 if(!this.db){
@@ -47,6 +48,63 @@ function DAO() {
                     '[Descricao] VARCHAR(200));'
 
             ].join('')
+                ,[],
+                function ok() {console.info('motivo_aplicacao');},
+                function err(a,err) {console.warn(err);}
+            );
+
+
+            tx.executeSql(
+                [
+                    'CREATE TABLE [Aplicacao] (',
+                    '[Id] integer NOT NULL Primary Key autoincrement,',
+                    '[Data] DATETIME,',
+                    '[Quantidade] NUMBER,',
+                    '[Id_TipoInsulina] integer CONSTRAINT [Fk_Tipo] REFERENCES [Tipo_Insulina]([Id]),',
+                    '[Id_MotivoAplicacao] integer CONSTRAINT [FK_Motivo] REFERENCES [Motivo_Aplicacao]([Id]),',
+                    '[Qtd_Cho] NUMBER,',
+                    '[Id_Paciente] integer CONSTRAINT [Fk_Paciente] REFERENCES [Paciente]([Id]));'
+                ].join('')
+                ,[],
+                function ok() {console.info('aplicacao');},
+                function err(a,err) {console.warn(err);}
+            );
+
+            tx.executeSql(
+                [
+                    'CREATE TABLE "Motivo_Medicao" (',
+                    '[Id] integer NOT NULL Primary Key autoincrement,',
+                    '[Descricao] VARCHAR);'
+                ].join('')
+                ,[],
+                function ok() {console.info('motivo_medicao');},
+                function err(a,err) {console.warn(err);}
+            );
+
+            tx.executeSql(
+                [
+                    'CREATE TABLE [Medicao] (',
+                    '[Id] integer NOT NULL Primary Key autoincrement,',
+                    '[Data] DATETIME,',
+                    '[Valor] NUMBER,',
+                    //'[Observacao] VARCHAR(200),',
+                    '[Id_MotivoMedicao] integer NOT NULL CONSTRAINT [Fk_motivo] REFERENCES [Motivo_Medicao]([Id]),',
+                    '[Id_Paciente] integer CONSTRAINT [Fk_Paciente] REFERENCES [Paciente]([Id]));'
+                ].join('')
+                ,[],
+                function ok() {console.info('medicao');},
+                function err(a,err) {console.warn(err);}
+            );
+
+            tx.executeSql(
+                [
+                    'INSERT INTO [Motivo_Medicao] (Descricao) ',
+                    'SELECT (?) as Descricao UNION SELECT (?) UNION SELECT (?) UNION SELECT (?) UNION SELECT (?) UNION SELECT (?)'
+                ].join('')
+                ,['Jejum','Café da Manhã','Almoço'
+                    ,'Café da tarde','Janta', 'Mal Estar'],
+                function ok() {console.info('insert motivo_medicao');},
+                function err(a,err) {console.warn(err);}
             );
 
             tx.executeSql(
@@ -65,6 +123,9 @@ function DAO() {
                     '[Glicemia_Ideal] NUMBER,',
                     '[Insulina_Cho] NUMBER);'
                 ].join('')
+                ,[],
+                function ok() {console.info('paciente');},
+                function err(a,err) {console.warn(err);}
             );
 
             tx.executeSql(
@@ -77,8 +138,8 @@ function DAO() {
                     'VALUES ( ?,?,?,?,?,?,?,?,?,?,?)'
                 ].join(''),
                 ['','','','','','','','','','',''],
-                function ok() {console.info('salvo default');},
-                function err(a,err) {console.warn(err); DAOERR.err = err;}
+                function ok() {console.info('insert paciente');},
+                function err(a,err) {console.warn(err);}
             );
 
             tx.executeSql(
@@ -87,60 +148,22 @@ function DAO() {
                     '[Id] Integer NOT NULL Primary Key autoincrement,',
                     '[Descricao] VARCHAR(200));'
                 ].join('')
+                ,[],
+                function ok() {console.info('tipo_insulina');},
+                function err(a,err) {console.warn(err);}
             );
 
-            tx.executeSql(
-                [
-                    'CREATE TABLE [Aplicacao] (',
-                    '[Id] integer NOT NULL Primary Key autoincrement,',
-                    '[Data] DATETIME,',
-                    '[Quantidade] NUMBER,',
-                    '[Id_TipoInsulina] integer CONSTRAINT [Fk_Tipo] REFERENCES [Tipo_Insulina]([Id]),',
-                    '[Id_MotivoAplicacao] integer CONSTRAINT [FK_Motivo] REFERENCES [Motivo_Aplicacao]([Id]),',
-                    '[Qtd_Cho] NUMBER,',
-                    '[Id_Paciente] integer CONSTRAINT [Fk_Paciente] REFERENCES [Paciente]([Id]));'
-                ].join('')
-            );
-
-            tx.executeSql(
-                [
-                    'CREATE TABLE "Motivo_Medicao" (',
-                    '[Id] integer NOT NULL Primary Key autoincrement,',
-                    '[Descricao] VARCHAR);'
-                ].join('')
-            );
-
-            tx.executeSql(
-                [
-                    'CREATE TABLE [Medicao] (',
-                    '[Id] integer NOT NULL Primary Key autoincrement,',
-                    '[Data] DATETIME,',
-                    '[Valor] NUMBER,',
-                    //'[Observacao] VARCHAR(200),',
-                    '[Id_MotivoMedicao] integer NOT NULL CONSTRAINT [Fk_motivo] REFERENCES [Motivo_Medicao]([Id]),',
-                    '[Id_Paciente] integer CONSTRAINT [Fk_Paciente] REFERENCES [Paciente]([Id]));'
-            ].join('')
-            )
-
-            tx.executeSql(
-                'SELECT COUNT(*) FROM PACIENTE',[],
-                function (tx,r) {_DAO.data = r;}
-            );
-
-            //initi();
         });
-
-
-        //
     };
 
     this.drop = function () {
         this.db.transaction(function(tx){
-            tx.executeSql('DROP TABLE [Usuario_Acao]');
-            tx.executeSql('DROP TABLE [Fixo]');
-            tx.executeSql('DROP TABLE [Volante]');
-            tx.executeSql('DROP TABLE [Usuario]');
-            tx.executeSql('DROP TABLE [Acao]');
+            tx.executeSql('DROP TABLE [Aplicacao]');
+            tx.executeSql('DROP TABLE [Motivo_Aplicacao]');
+            tx.executeSql('DROP TABLE [Medicao]');
+            tx.executeSql('DROP TABLE [Motivo_Medicao]');
+            tx.executeSql('DROP TABLE [Paciente]');
+            tx.executeSql('DROP TABLE [Tipo_Insulina]');
         });
     };
 

@@ -5,17 +5,18 @@
     <ion-content class="has-header">
         <div class="list">
             <label class="item item-input">
-                <input type="date" placeholder="Data Inicial" ng-model="a1c.dataInicial">
+                <input type="date" placeholder="Data Inicial" ng-model="a1c.dataInicial" ng-required="true">
             </label>
             <label class="item item-input">
-                <input type="date" placeholder="Data Final" ng-model="a1c.dataFinal">
+                <input type="date" placeholder="Data Final" ng-model="a1c.dataFinal" ng-required="true">
             </label>
         </div>
         <div class="row aligner">
             <div class="aligner-item">
                 <br/>
-                <p style="font-size: 17px;" ng-if="show">Media é: {{a1c.media}}</p>
-                <p style="font-size: 17px;" ng-if="show">A1C é: {{a1c.valor}}</p>
+                <p ng-if="!a1c.erro && show" style="font-size: 17px;">Media é: {{a1c.media}}</p>
+                <p ng-if="!a1c.erro && show" style="font-size: 17px;" >A1C é: {{a1c.valor}}</p>
+                <p class="energized-border" ng-if="a1c.erro">{{a1c.erro}}</p>
                 <br/>
                 <div class="col col-10">
 
