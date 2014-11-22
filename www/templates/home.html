@@ -9,12 +9,12 @@
                 <tr>
                     <th>Data</th>
                     <th>Glicemia</th>
-                    <th>Observacao</th>
+                    <th>Motivo</th>
                 </tr>
                 <tr ng-repeat="item in glicemia">
-                    <td>{{item.data | date: 'dd/MM/yyyy'}}</td>
-                    <td>{{item.valor}}</td>
-                    <td>{{item.observacao}}</td>
+                    <td>{{item.Data | date: 'hh:mm'}}</td>
+                    <td>{{item.Valor}}</td>
+                    <td>{{item.Descricao}}</td>
                 </tr>
             </table>
         </div>

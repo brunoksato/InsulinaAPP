@@ -1,3 +1,5 @@
+
+
 angular.module('starter', ['ionic', 'ngCordova','DAO', 'starter.controllers'])
 
 .run(function($ionicPlatform,DAO) {
@@ -9,10 +11,26 @@ angular.module('starter', ['ionic', 'ngCordova','DAO', 'starter.controllers'])
       StatusBar.styleDefault();
     }
 
-
   });
+        DAO.connect();
+        DAO.db.transaction(
+            function (tx) {
+                tx.executeSql('SELECT * FROM [motivo_medicao]',[],
 
-      DAO.connect();
+                    function (tx,res) {
+                        if (res.rows.length > 0) {
+                            for (i = 0; i < res.rows.length; i++) {
+                                motivos.push(res.rows.item(i).clone());
+                            }
+                        }
+                    },
+
+                    function (tx, err) {
+                        console.warn(err);
+                    }
+                );
+            }
+        );
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -121,6 +139,13 @@ angular.module('starter', ['ionic', 'ngCordova','DAO', 'starter.controllers'])
 
 });
 
+var motivos = [
+    //{id: 1, nome: 'Jejum',hora:'08'},
+    //{id: 2, nome: 'Café da manha',hora: '10'},
+    //{id: 3, nome: 'Almoço',hora:'13'},
+    //{id: 4, nome: 'Janta', hora: '20'}
+];
+
 Date.prototype.getData = function () {
     var dia = this.getDate();
     dia = dia < 10 ? "0" + dia : dia.toString();
@@ -155,4 +180,26 @@ Object.prototype.clone = function() {
         cloned[attr] = this[attr];
     }
     return cloned;
+}
+
+Array.prototype.search = function (item) {
+    if (typeof(item) === 'object') {
+
+        for (i = 0; i < this.length; i++) {
+
+            this.check = true;
+
+            for (this.at in item) {
+
+                if (typeof(item[this.at]) !== 'function') {
+
+                    if (item[this.at] !== (this[i])[this.at]) {
+                        this.check = false;
+                    }
+                }
+            }
+            if (this.check) return this[i];
+        }
+    }
+    return this;
 }

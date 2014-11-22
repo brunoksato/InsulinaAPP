@@ -1,7 +1,6 @@
 /**
  * Created by Bruno on 14/11/2014.
  */
-_DAO = {err:{}, data: {}};
 
 angular.module('DAO', [])
     .service('DAO', DAO)
@@ -167,7 +166,22 @@ function DAO() {
 
     };
 
-
+    this.exist = function(table, Id) {
+        var exist;
+        this.db.transaction(
+            function (tx) {
+                tx.executeSql(
+                    'SELECT COUNT(*)>0 as exist FROM ' + table + ' WHERE id = '+ Id, []
+                    , function (tx, res) {
+                        exist = res.rows.item(0).exist;
+                        return exist;
+                    }
+                    , function (tx, err) { console.warn(err);}
+                );
+            }
+        );
+        return exist;
+    }
 };
 DAO.$inject = [];
 

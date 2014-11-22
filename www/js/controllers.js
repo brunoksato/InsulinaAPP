@@ -9,7 +9,7 @@ angular.module('starter.controllers', [])
     .controller('A1CCtrl', A1CCtrl)
     .controller('ObservacaoCtrl', ObservacaoCtrl)
     .controller('EditarCtrl', EditarCtrl);
-
+var teste = [];
 function AppCtrl($scope) {
 
 }
@@ -17,19 +17,23 @@ function AppCtrl($scope) {
 function HomeCtrl($scope, DAO) {
     $scope.glicemia = [];
     DAO.db.transaction(function (tx) {
-        tx.executeSql("SELECT * FROM Medicao Where strftime('%d/%m/%Y','now') = strftime('%d/%m/%Y',data)",
+        tx.executeSql(
+            "SELECT Data, Valor, Descricao FROM [medicao] m JOIN [motivo_medicao] mm ON m.id_motivomedicao = mm.Id  " +
+            "WHERE strftime('%d/%m/%Y','now') = strftime('%d/%m/%Y',m.  data)",
             [],
             function (tx, results) {
             var len = results.rows.length;
             for (var i = 0; i < len; i++){
+                teste.push(results.rows.item(i).clone());
                 $scope.glicemia.push(
                     {
-                        data: results.rows.item(i).Data,
-                        valor: results.rows.item(i).Valor,
-                        observacao : results.rows.item(i).Observacao
+                        Data: results.rows.item(i).Data,
+                        Valor: results.rows.item(i).Valor,
+                        Descricao : results.rows.item(i).Descricao
                     }
                 );
             }
+                $scope.$apply();
         },
             function (tx, err) {
                 console.warn(err);
@@ -64,8 +68,6 @@ function PacienteCtrl($scope, DAO) {
                     if (res.rows.length > 0) {
                             $scope.data = res.rows.item(0).clone();
                     }
-                    _DAO.data = $scope.data;
-
                     $scope.$apply();
                 },
                 function (tx, err) {
@@ -108,15 +110,10 @@ function PacienteCtrl($scope, DAO) {
 }
 
 function GlicemiaCtrl($scope, DAO) {
-    $scope.motivos = [
-        {id: 1, nome: 'Jejum',hora:'08'},
-        {id: 2, nome: 'Café da manha',hora: '10'},
-        {id: 3, nome: 'Almoço',hora:'13'},
-        {id: 4, nome: 'Janta', hora: '20'}
-    ];
+    $scope.motivos = motivos;
     $scope.default = {};
     $scope.glicemia = {motivo:{}};
-
+    //Tentando definir valor de motivo padrão por hora.
     for (i = 0; i < $scope.motivos.length; i++) {
         var agora = new Date();
         var padrao = new Date();
@@ -136,7 +133,6 @@ function GlicemiaCtrl($scope, DAO) {
 
     $scope.salvar = function () {
         DAO.db.transaction(function (tx) {
-            console.log($scope.data);
             var agora = new Date();
             tx.executeSql("INSERT INTO medicao(Data,Valor,Observacao,Id_MotivoMedicao,Id_Paciente) Values (?,?,?,?,?)",[
                 agora.toISOString(),
@@ -231,7 +227,7 @@ function GraficoCtrl($scope) {
 function A1CCtrl($scope, DAO) {
 
     $scope.show = false;
-    $scope.a1c = {dataInicial:{}, dataFinal: {}, };
+    $scope.a1c = {dataInicial:{}, dataFinal: {} };
 
     $scope.calcular = function () {
         var inicio = new Date();
@@ -286,19 +282,22 @@ var tabelaA1C = [
 
 function EditarCtrl($scope, DAO) {
     $scope.editar = [];
-
-
+    $scope.motivos = motivos;
+    $scope.hoje = new Date();
     DAO.db.transaction(function (tx) {
-        tx.executeSql("SELECT * FROM Medicao where strftime('%d/%m%Y','now') = strftime('%d/%m%Y',Data)"
+        tx.executeSql("SELECT m.Id, Data, Valor, mm.Id as MID, mm.Descricao FROM [medicao] m " +
+            "JOIN [motivo_medicao] mm ON mm.Id = m.id_motivomedicao " +
+            "WHERE strftime('%d/%m%Y','now') = strftime('%d/%m%Y',Data)"
             ,[], function (tx, results) {
             var len = results.rows.length;
             for (var i = 0; i < len; i++){
+                var obj = results.rows.item(i).clone();
                 $scope.editar.push(
                     {
-                        $selected: false,
-                        data: results.rows.item(i).Data,
-                        valor: results.rows.item(i).Valor,
-                        observacao : results.rows.item(i).Observacao
+                        Id: obj.Id
+                        ,Data: obj.Data
+                        ,Valor:obj.Valor
+                        ,motivo: motivos.search({Id: obj.MID})
                     }
                 );
             }
@@ -308,9 +307,55 @@ function EditarCtrl($scope, DAO) {
                 $scope.show = true;
             });
 
-        });
-    })
+        },
+        function (tx,err) {
+            console.warn(err);
+        }
+        );
+    });
 
+    $scope.select = function (item) {
+        item.$edit = true;
+        for (var i = 0 ; i < $scope.editar.length; i++) {
+            if (item.Id !== $scope.editar[i].Id) {
+                $scope.editar[i].$edit = false;
+                if ($scope.editar[i].$change) {
+                    $scope.salve($scope.editar[i]);
+                }
+            }
+        }
+    }
+
+    $scope.salvar = function() {
+        for (var i = 0 ; i < $scope.editar.length; i++) {
+            if ($scope.editar[i].$change) {
+                $scope.salve($scope.editar[i]);
+                $scope.editar[i].$edit = false;
+            }
+        }
+    }
+
+    $scope.salve = function (item) {
+        item.$change = false;
+        DAO.db.transaction(
+            function (tx) {
+                tx.executeSql(
+                    'UPDATE [medicao] SET Valor = ? , id_MotivoMedicao = ? WHERE Id = ? ',
+                    [
+                        item.Valor
+                        ,item.motivo.Id
+                        ,item.Id
+                    ]
+                    ,function (tx, res) {
+                        console.info('Salvo');
+                    }
+                    ,function (tx, err) {
+                        console.warn(err);
+                    }
+                );
+            }
+        );
+    }
 }
 
 function ObservacaoCtrl($scope, DAO) {

@@ -6,6 +6,15 @@
     justify-content: center;
 }
 
+.selected {
+    background-color: #eeeeff;
+}
+
+.table-striped > tbody > tr:nth-child(odd).selected > td,
+.table-striped > tbody > tr:nth-child(odd).selected > th {
+    background-color: #ddddff;
+}
+
 .aligner-item {
     max-width: 50%;
 }
