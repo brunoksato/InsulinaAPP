@@ -12,7 +12,7 @@
                     <th>Observacao</th>
                 </tr>
                 <tr ng-repeat="item in glicemia">
-                    <td>{{item.data}}</td>
+                    <td>{{item.data | date: 'dd/MM/yyyy'}}</td>
                     <td>{{item.valor}}</td>
                     <td>{{item.observacao}}</td>
                 </tr>

@@ -129,6 +129,24 @@ Date.prototype.getData = function () {
     return dia + "/" + mes + "/" + this.getFullYear();
 }
 
+Date.prototype.fromInput = function (valor) {
+    if (valor == null || valor === 'undefined') {
+        console.warn('Data não definida.');
+        return this;
+    } else {
+        temp = valor.toString().split('-');
+        this.setDate(temp[2]);
+        this.setMonth(parseInt(temp[1]) - 1);
+        this.setFullYear(temp[0]);
+    }
+    return this;
+}
+
+Date.prototype.getData = function (valor) {
+    this.fromInput(valor);
+    return this.getData();
+}
+
 Object.prototype.clone = function() {
     if (this == null) return null;
     if (typeof(this) !== "object") return null;
@@ -138,12 +156,3 @@ Object.prototype.clone = function() {
     }
     return cloned;
 }
-
-Date.prototype.getHora = function () {
-    return this.getHours() + ":" + this.getMinutes();
-}
-
-Date.prototype.getDataEHora = function () {
-    return this.Data() + "|" + this.getHora();
-}
-

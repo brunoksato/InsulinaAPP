@@ -117,7 +117,7 @@ function DAO() {
                     '[Id] integer NOT NULL Primary Key autoincrement,',
                     '[Data] DATETIME,',
                     '[Valor] NUMBER,',
-                    '[Observacao] VARCHAR(200),',
+                    //'[Observacao] VARCHAR(200),',
                     '[Id_MotivoMedicao] integer NOT NULL CONSTRAINT [Fk_motivo] REFERENCES [Motivo_Medicao]([Id]),',
                     '[Id_Paciente] integer CONSTRAINT [Fk_Paciente] REFERENCES [Paciente]([Id]));'
             ].join('')
