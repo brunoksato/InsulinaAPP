@@ -103,7 +103,17 @@ angular.module('starter', ['ionic', 'ngCordova','DAO', 'starter.controllers'])
         }
       }
     })
-//Acrescentado
+
+      .state('app.motivos', {
+          url: "/motivos",
+          views: {
+              'menuContent' :{
+                  templateUrl: "templates/motivos.html",
+                  controller: 'MotivoCtrl'
+              }
+          }
+      })
+
       .state('app.editar', {
         url: "/editar",
         views: {

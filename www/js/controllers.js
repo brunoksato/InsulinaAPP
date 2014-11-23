@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ionic'])
     .controller('AppCtrl', AppCtrl)
     .controller('HomeCtrl', HomeCtrl)
     .controller('PacienteCtrl', PacienteCtrl)
@@ -8,6 +8,7 @@ angular.module('starter.controllers', [])
     .controller('GraficoCtrl', GraficoCtrl)
     .controller('A1CCtrl', A1CCtrl)
     .controller('ObservacaoCtrl', ObservacaoCtrl)
+    .controller('MotivoCtrl', MotivoCtrl)
     .controller('EditarCtrl', EditarCtrl);
 
 function AppCtrl($scope) {
@@ -290,6 +291,47 @@ var tabelaA1C = [
     { valor: 11 ,media: 267 },
     { valor: 12 ,media: 295 }
 ]
+
+function MotivoCtrl($scope, DAO) {
+    $scope.motivos = {Aplicacao:[],Medicao: []};
+    DAO.db.transaction(function (tx) {
+        tx.executeSql(
+            'SELECT * FROM [motivo_aplicacao]'
+            ,[],
+            function (tx, res) {
+                if (res.rows.length > 0) {
+                    for (var i = 0; i < res.rows.length; i++) {
+                        $scope.motivos.Aplicacao.push(res.rows.item(i).clone());
+                    }
+
+                } else {
+                    //alert
+                }
+            },
+            function (tx, err) {
+                console.warn(err);
+            }
+        );
+
+        tx.executeSql(
+            'SELECT * FROM [motivo_medicao]'
+            ,[],
+            function (tx, res) {
+                if (res.rows.length > 0) {
+                    for (var i = 0; i < res.rows.length; i++) {
+                        $scope.motivos.Medicao.push(res.rows.item(i).clone());
+                    }
+                } else {
+                    //alert
+                }
+            },
+            function (tx, err) {
+                console.warn(err);
+            }
+        );
+    });
+
+}
 
 function EditarCtrl($scope, DAO) {
     $scope.editar = [];

@@ -1,0 +1,56 @@
+<ion-view title="Motivos" hide-back-button="true" class="has-tabs-top">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <br/>
+    <br/>
+    <br/>
+    <ion-tabs class="tabs-top">
+
+        <ion-tab title="Medicao">
+            <ion-nav-view name="tab-B" class="tab-item col-90 center-block">
+                <ion-content class="has-tabs">
+                    <table class="table table-hover table-striped table-responsive" style="border: 1px solid #eee">
+                        <tr>
+                            <th>Descricao</th>
+                            <th>Descricao</th>
+                            <th>Descricao</th>
+                        </tr>
+                        <tr ng-repeat="item in motivos.Medicao" ng-click="select(item);" ng-class="{'selected' : item.$edit}">
+                            <td>
+                                {{item.Descricao}}
+                            </td><td>
+                                {{item.Descricao}}
+                            </td><td>
+                                {{item.Descricao}}
+                            </td>
+                    </table>
+                </ion-content>
+            </ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="Aplicacao">
+            <ion-nav-view name="tab-A" class="tab-item col-90">
+                <ion-content class="has-tabs">
+                    <table class="table table-hover table-striped table-responsive" style="border: 1px solid #eee">
+                        <tr>
+                            <th>Descricao</th>
+                        </tr>
+                        <tr ng-repeat="item in motivos.Aplicacao" ng-click="select(item);" ng-class="{'selected' : item.$edit}">
+                            <td>
+                                {{item.Descricao}}
+                            </td>
+                    </table>
+                </ion-content>
+            </ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="Tipo Insulina">
+            <ion-nav-view name="tab-A" class="tab-item">
+                <ion-content class="has-tabs">
+
+                </ion-content>
+            </ion-nav-view>
+        </ion-tab>
+    </ion-tabs>
+</ion-view>
