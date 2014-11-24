@@ -16,7 +16,7 @@ function AppCtrl($scope) {
 
 }
 
-function HomeCtrl($scope, DAO) {
+function HomeCtrl($scope, DAO, service) {
     $scope.glicemia = [];
     DAO.db.transaction(function (tx) {
         tx.executeSql(
@@ -43,7 +43,7 @@ function HomeCtrl($scope, DAO) {
     });
 }
 
-function PacienteCtrl($scope, DAO) {
+function PacienteCtrl($scope, DAO, service) {
 
     $scope.clear = function () {
         $scope.data.Nome = null;
@@ -109,9 +109,10 @@ function PacienteCtrl($scope, DAO) {
     $scope.load();
 }
 
-function GlicemiaCtrl($scope, DAO) {
+function GlicemiaCtrl($scope, DAO, service) {
     $scope.motivos = motivos;
     $scope.glicemia = {motivo:{}};
+    $scope.info = '';
 
     $scope.clear = function () {
         $scope.glicemia.valor = null;
@@ -123,7 +124,7 @@ function GlicemiaCtrl($scope, DAO) {
         DAO.insert(
             {
                 Table: 'medicao',
-                Fields: ['Data','Valor','Id_MotivoMedicao', 'Id_Pacietne'],
+                Fields: ['Data','Valor','Id_MotivoMedicao', 'Id_Paciente'],
                 Values: [
                     agora.toISOString(),
                     $scope.glicemia.valor,
@@ -133,10 +134,15 @@ function GlicemiaCtrl($scope, DAO) {
             },
             function (res) {
                 if (res.rowsAffected == 1 ){
-                    console.info('salvo');
+                    service.alert('Salvo com sucesso', function (tx) {
+                        $scope.info = tx;
+                    });
                 } else {
                     //alert FALHA
                 }
+                $scope.$apply(function () {
+                    $scope.clear();
+                })
             }
         );
         //DAO.db.transaction(function (tx) {
@@ -191,7 +197,7 @@ function InsulinaRapidaCtrl($scope,DAO) {
     };
 }
 
-function InsulinaBasalCtrl($scope, DAO) {
+function InsulinaBasalCtrl($scope, DAO, service) {
     $scope.basal = {};
 
     $scope.clear = function () {
@@ -226,7 +232,7 @@ function InsulinaBasalCtrl($scope, DAO) {
     };
 }
 
-function GraficoCtrl($scope, DAO) {
+function GraficoCtrl($scope, DAO, service) {
     $scope.getData = function () {
         DAO.db.transaction(
             function (tx) {
@@ -253,7 +259,6 @@ function A1CCtrl($scope, DAO, service) {
         var inicio = data.getInputData($scope.a1c.dataInicial);
         var final = data.getInputData($scope.a1c.dataFinal);
         DAO.db.transaction(function (tx) {
-            console.warn("SELECT * FROM Aplicacao WHERE strftime('%d/%m/%Y',data) >= " + inicio + " and " + final + " >= strftime('%d/%m/%Y',data) ");
             tx.executeSql("SELECT * FROM Aplicacao WHERE strftime('%d/%m/%Y',data) >= ? and ? >= strftime('%d/%m/%Y',data) ",
                 [
                     inicio
@@ -293,6 +298,7 @@ function A1CCtrl($scope, DAO, service) {
 function MotivoCtrl($scope, DAO, $ionicTabsDelegate, service) {
     $scope.motivos = {Aplicacao:[],Medicao: [], Insulina: []};
     this.arr = [];
+    $scope.$edit = false;
     $scope.get = function () {
         switch ($ionicTabsDelegate.selectedIndex()) {
             case 0: //MEDICAO
@@ -310,43 +316,52 @@ function MotivoCtrl($scope, DAO, $ionicTabsDelegate, service) {
         }
         return this.arr;
     }
-
-    DAO.db.transaction(function (tx) {
-        tx.executeSql(
-            'SELECT * FROM [motivo_aplicacao]'
-            ,[],
-            function (tx, res) {
-                if (res.rows.length > 0) {
-                    for (var i = 0; i < res.rows.length; i++) {
-                        $scope.motivos.Aplicacao.push(res.rows.item(i).clone());
+    $scope.load = function () {
+        DAO.db.transaction(function (tx) {
+            tx.executeSql(
+                'SELECT * FROM [motivo_aplicacao]'
+                , [],
+                function (tx, res) {
+                    if (res.rows.length > 0) {
+                        for (var i = 0; i < res.rows.length; i++) {
+                            $scope.motivos.Aplicacao.push(res.rows.item(i).clone());
+                        }
+                        $scope.$apply();
+                    } else {
+                        //alert
                     }
-
-                } else {
-                    //alert
+                    //$scope.$apply(
+                    //    function () {
+                    //
+                    //    }
+                    //);
+                },
+                function (tx, err) {
+                    console.warn(err);
                 }
-            },
-            function (tx, err) {
-                console.warn(err);
-            }
-        );
+            );
 
-        tx.executeSql(
-            'SELECT * FROM [motivo_medicao]'
-            ,[],
-            function (tx, res) {
-                if (res.rows.length > 0) {
-                    for (var i = 0; i < res.rows.length; i++) {
-                        $scope.motivos.Medicao.push(res.rows.item(i).clone());
+            tx.executeSql(
+                'SELECT * FROM [motivo_medicao]'
+                , [],
+                function (tx, res) {
+                    if (res.rows.length > 0) {
+                        for (var i = 0; i < res.rows.length; i++) {
+                            $scope.motivos.Medicao.push(res.rows.item(i).clone());
+                        }
+                        $scope.$apply();
+                    } else {
+                        //alert
                     }
-                } else {
-                    //alert
+                    //$scope.$apply(
+                    //);
+                },
+                function (tx, err) {
+                    console.warn(err);
                 }
-            },
-            function (tx, err) {
-                console.warn(err);
-            }
-        );
-    });
+            );
+        });
+    }
 
     $scope.select = function (item) {
         item.$edit = !item.$edit;
@@ -354,8 +369,7 @@ function MotivoCtrl($scope, DAO, $ionicTabsDelegate, service) {
 
     $scope.editar = function (item) {
         $scope.get();
-        $scope.edit = !$scope.edit;
-        service.alert('TESTE');
+        $scope.$edit = !$scope.$edit;
         if ($scope.edit) {
 
         } else {
@@ -364,12 +378,13 @@ function MotivoCtrl($scope, DAO, $ionicTabsDelegate, service) {
     }
     var canDel = false;
     $scope.apagar = function (item) {
+        $scope.get();
         if (canDel) {
             console.log('delete');
             canDel = false;
         } else {
 
-                var hasChanges = false;
+            var hasChanges = false;
             var count = 0;
             for (var i = 0; i < this.arr.length; i++) {
                 if (this.arr[i].$edit){
@@ -377,10 +392,11 @@ function MotivoCtrl($scope, DAO, $ionicTabsDelegate, service) {
                     count++;
                 }
             }
-            if (hasChanges)
+            if (hasChanges) {
                 $scope.info = 'Pressione apagar novamente! Selecionado ' + count;
-            else
-                $scope.info = 'Nenhum registro selecionado!';
+                canDel = true;
+            }
+            else $scope.info = 'Nenhum registro selecionado!';
         }
     }
 
@@ -388,9 +404,10 @@ function MotivoCtrl($scope, DAO, $ionicTabsDelegate, service) {
 
 
     }
+    $scope.load();
 }
 
-function EditarCtrl($scope, DAO) {
+function EditarCtrl($scope, DAO, service) {
     $scope.editar = [];
     $scope.motivos = motivos;
     $scope.hoje = new Date();
@@ -468,9 +485,12 @@ function EditarCtrl($scope, DAO) {
     }
 }
 
-function ObservacaoCtrl($scope, DAO) {
+function ObservacaoCtrl($scope, DAO, service) {
+
     $scope.observacao = {};
+
     var hoje = new Date();
+
     $scope.observacao.Data = hoje.getData();
 
     $scope.load = function () {
@@ -480,7 +500,7 @@ function ObservacaoCtrl($scope, DAO) {
                 ,[],
                 function (tx, res) {
                     if (res.rows.length > 0) {
-                        res.rows.item(0).clone();
+                        $scope.observacao.Texto = res.rows.item(0).clone().observacao;
                         $scope.$apply();
                     } else {
                         //alert
@@ -490,17 +510,35 @@ function ObservacaoCtrl($scope, DAO) {
         });
     }
 
-    $scope.insert = function(item) {
-        DAO.exist({Table:'Medicao',Id: 1},
-            function (exist) {
-                console.log(exist);
-            });
+    $scope.salvar = function(item) {
+        DAO.save(
+            {
+                Table: 'Tempo',
+                Fields: ['Data','Observacao'],
+                Id: item.Id,
+                Values: [
+                    hoje.toISOString(),
+                    item.Texto
+                ]
+            },
+            function (res) {
+                try {
+                    if (res.insertId) {
+                        item.Id = res.insertId;
+                    }
+                } catch(e) {
+
+                }
+
+                console.info(res);
+            }
+        )
     }
 
-
+    $scope.load();
 
 }
 
-function RelatorioCtrl($scope, DAO) {
+function RelatorioCtrl($scope, DAO, service) {
 
 }

@@ -25,6 +25,8 @@ function DAO() {
             } else {
                 //var db = window.sqlitePlugin.openDatabase({name: shortName});
                 this.db = openDatabase(shortName,version,displayName,maxSize);
+
+                //console.warn(this.db.getVersion());
                 this.drop();
                 this.create();
 
@@ -207,11 +209,14 @@ function DAO() {
     };
 
     this.save = function (item, callback) {
-        if (this.exist(item)) {
-            this.update(item, callback);
-        } else {
-            this.insert(item,callback);
-        }
+        this.exist(item, function (res,DAO) {
+            if (res) {
+
+                DAO.update(item, callback);
+            } else {
+                DAO.insert(item,callback);
+            }
+        }, this);
     };
     //DAO.insert(
     //    {
@@ -231,9 +236,6 @@ function DAO() {
             for (var i = 0; i < item.Fields.length; i++) {
              params.push('?');
             }
-            console.info(item);
-
-            console.log('INSERT INTO ' + item.Table + '(' + item.Fields.join(', ') + ') VALUES (' + params.join(',') + ')');
 
             tx.executeSql('INSERT INTO ' + item.Table + '(' + item.Fields.join(', ') + ') VALUES (' + params.join(',') + ')',
 
@@ -282,22 +284,27 @@ function DAO() {
 
     //{
     // Table: '',
-    // Id: 1
+    // Fields: ['Id'],
+    // Values: [1]
     // },
     // function (res)
     // {
     //      if(res) console.info('existe');
     // }
-    this.exist = function(item, callback) {
+    this.exist = function(item, callback, DAO) {
         if (typeof(item) !== 'object' || typeof(callback) !== 'function' )
             throw new TypeError('Need parse an object and a function.');
-
+        var search = {f:'Id',v:item.Id};
+        if (!item.Id) search = {f:item.Fields[0],v:item.Values[0]}
         this.db.transaction(
             function (tx) {
                 tx.executeSql(
-                    'SELECT COUNT(*)>0 as exist FROM ' + item.Table + ' WHERE id = '+ item.Id, []
+                    'SELECT COUNT(*)>0 as exist FROM ' + item.Table + ' WHERE ' + search.f + ' = ?', [search.v]
                     , function (tx, res) {
-                        callback(res.rows.item(0).exist);
+
+                        var resposta = res.rows.item(0).exist;
+
+                        callback(resposta, DAO);
                     }
                     , function (tx, err) { console.warn(err);}
                 );

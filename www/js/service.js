@@ -6,12 +6,12 @@ angular.module('service', ['ionic'])
 
 
 function service($timeout, DAO) {
-    this.alert = function(txt) {
-        console.info(txt);
+    this.alert = function(txt, field) {
+        field(txt);
         $timeout(
             function () {
-                console.info('END ' + txt)
-            }, 1500
+                field('');
+            }, 2000
         )
     }
 
@@ -27,4 +27,6 @@ function service($timeout, DAO) {
         { valor: 11 ,media: 267 },
         { valor: 12 ,media: 295 }
     ];
+
+    this.aplicacao = 0;
 }

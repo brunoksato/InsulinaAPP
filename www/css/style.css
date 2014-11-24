@@ -1,4 +1,28 @@
 /* Empty. Add your own CSS if you like */
+.color-error {
+    color: #E0534E;
+}
+
+.color-success {
+    color: #5EBA5E;
+}
+
+.color-info {
+    color: #44ABC9;
+}
+
+.background-error {
+    background-color: #E0534E;
+}
+
+.background-success {
+    background-color: #5EBA5E;
+}
+
+.background-info {
+    background-color: #44ABC9;
+}
+
 
 .aligner {
     display: flex;

@@ -9,11 +9,11 @@
                 <ion-content class="has-tabs">
                     <table class="table table-hover table-striped table-responsive" style="border: 1px solid #eee">
                         <tr>
-                            <th ng-if="edit"></th>
+                            <th ng-if="$edit"></th>
                             <th>Descricao</th>
                         </tr>
                         <tr ng-repeat="item in motivos.Medicao" class="text-left"  ng-class="{'selected' : item.$edit}">
-                            <td ng-if="edit" ng-click="select(item,'m');">
+                            <td ng-if="$edit" ng-click="select(item,'m');">
                                 <input type="checkbox" ng-model="item.$edit" />
                             </td>
                             <td>
@@ -28,8 +28,8 @@
                     <label class="positive center-block text-center" ng-if="info">{{info}}</label>
                     <div class="center-block text-center">
                         <button class="button" ng-click="editar('m')">Editar</button>
-                        <button class="button" ng-click="salvar('m')">Salvar</button>
-                        <button class="button button-energized" ng-click="apagar('m')">Deletar</button>
+                        <button ng-if="$edit" class="button" ng-click="salvar('m')">Salvar</button>
+                        <button ng-if="$edit" class="button button-energized" ng-click="apagar('m')">Deletar</button>
                     </div>
                 </ion-content>
             </ion-nav-view>
@@ -40,11 +40,11 @@
                 <ion-content class="has-tabs">
                     <table class="table table-hover table-striped table-responsive" style="border: 1px solid #eee">
                         <tr>
-                            <th ng-if="edit"></th>
+                            <th ng-if="$edit"></th>
                             <th>Descricao</th>
                         </tr>
                         <tr ng-repeat="item in motivos.Aplicacao" class="text-left"  ng-class="{'selected' : item.$edit}">
-                            <td ng-if="edit" ng-click="select(item,'a');">
+                            <td ng-if="$edit" ng-click="select(item,'a');">
                                 <input type="checkbox" ng-model="item.$edit" />
                             </td>
                             <td>
@@ -59,8 +59,8 @@
                     <label class="positive center-block text-center" ng-if="info">{{info}}</label>
                     <div class="center-block text-center">
                         <button class="button" ng-click="editar('a')">Editar</button>
-                        <button class="button" ng-click="salvar('a')">Salvar</button>
-                        <button class="button button-energized" ng-click="apagar('a')">Deletar</button>
+                        <button ng-if="$edit" class="button" ng-click="salvar('a')">Salvar</button>
+                        <button ng-if="$edit" class="button button-energized" ng-click="apagar('a')">Deletar</button>
                     </div>
                 </ion-content>
             </ion-nav-view>
