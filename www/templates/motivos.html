@@ -2,51 +2,72 @@
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
-    <br/>
-    <br/>
-    <br/>
-    <ion-tabs class="tabs-top">
+    <ion-tabs class="tabs-top tabs-color-positive">
 
         <ion-tab title="Medicao">
-            <ion-nav-view name="tab-B" class="tab-item col-90 center-block">
+            <ion-nav-view name="tab-Medicao" class="tab-item-stable">
                 <ion-content class="has-tabs">
                     <table class="table table-hover table-striped table-responsive" style="border: 1px solid #eee">
                         <tr>
-                            <th>Descricao</th>
-                            <th>Descricao</th>
+                            <th ng-if="edit"></th>
                             <th>Descricao</th>
                         </tr>
-                        <tr ng-repeat="item in motivos.Medicao" ng-click="select(item);" ng-class="{'selected' : item.$edit}">
+                        <tr ng-repeat="item in motivos.Medicao" class="text-left"  ng-class="{'selected' : item.$edit}">
+                            <td ng-if="edit" ng-click="select(item,'m');">
+                                <input type="checkbox" ng-model="item.$edit" />
+                            </td>
                             <td>
-                                {{item.Descricao}}
-                            </td><td>
-                                {{item.Descricao}}
-                            </td><td>
-                                {{item.Descricao}}
+                                <div ng-if="!item.$edit">
+                                    {{item.Descricao}}
+                                </div>
+                                <div ng-if="item.$edit">
+                                    <input type="text" ng-change="change(item,'m')" ng-model="item.Descricao" />
+                                </div>
                             </td>
                     </table>
+                    <label class="positive center-block text-center" ng-if="info">{{info}}</label>
+                    <div class="center-block text-center">
+                        <button class="button" ng-click="editar('m')">Editar</button>
+                        <button class="button" ng-click="salvar('m')">Salvar</button>
+                        <button class="button button-energized" ng-click="apagar('m')">Deletar</button>
+                    </div>
                 </ion-content>
             </ion-nav-view>
         </ion-tab>
 
         <ion-tab title="Aplicacao">
-            <ion-nav-view name="tab-A" class="tab-item col-90">
+            <ion-nav-view name="tab-A" class="tab-item-stable">
                 <ion-content class="has-tabs">
                     <table class="table table-hover table-striped table-responsive" style="border: 1px solid #eee">
                         <tr>
+                            <th ng-if="edit"></th>
                             <th>Descricao</th>
                         </tr>
-                        <tr ng-repeat="item in motivos.Aplicacao" ng-click="select(item);" ng-class="{'selected' : item.$edit}">
+                        <tr ng-repeat="item in motivos.Aplicacao" class="text-left"  ng-class="{'selected' : item.$edit}">
+                            <td ng-if="edit" ng-click="select(item,'a');">
+                                <input type="checkbox" ng-model="item.$edit" />
+                            </td>
                             <td>
-                                {{item.Descricao}}
+                                <div ng-if="!item.$edit">
+                                    {{item.Descricao}}
+                                </div>
+                                <div ng-if="item.$edit">
+                                    <input type="text" ng-change="change(item,'a')" ng-model="item.Descricao" />
+                                </div>
                             </td>
                     </table>
+                    <label class="positive center-block text-center" ng-if="info">{{info}}</label>
+                    <div class="center-block text-center">
+                        <button class="button" ng-click="editar('a')">Editar</button>
+                        <button class="button" ng-click="salvar('a')">Salvar</button>
+                        <button class="button button-energized" ng-click="apagar('a')">Deletar</button>
+                    </div>
                 </ion-content>
             </ion-nav-view>
         </ion-tab>
 
         <ion-tab title="Tipo Insulina">
-            <ion-nav-view name="tab-A" class="tab-item">
+            <ion-nav-view name="tab-A" class="tab-item-stable">
                 <ion-content class="has-tabs">
 
                 </ion-content>

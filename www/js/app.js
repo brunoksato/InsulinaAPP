@@ -1,5 +1,3 @@
-
-
 angular.module('starter', ['ionic', 'ngCordova','DAO', 'starter.controllers'])
 
 .run(function($ionicPlatform,DAO) {

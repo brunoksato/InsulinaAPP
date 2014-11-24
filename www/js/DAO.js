@@ -10,6 +10,9 @@ function DAO() {
 
     this.db;
 
+    //List Table names
+    //select name from sqlite_master where type = 'table' and (name not like 'sqlite%' and name not like '_%')
+
     this.connect = function () {
         var shortName = 'insulinaDb';
         var version = '1.0';
@@ -43,11 +46,24 @@ function DAO() {
 
             tx.executeSql(
                 [
+                    'CREATE TABLE [Tempo] (',
+                    '[Id] INTEGER NOT NULL Primary Key autoincrement,',
+                    '[Data] DateTime Unique,',
+                    '[Observacao] VARCHAR(200));'
+
+                ].join('')
+                ,[],
+                function ok() {console.info('tempo');},
+                function err(a,err) {console.warn(err);}
+            );
+
+            tx.executeSql(
+                [
                     'CREATE TABLE [Motivo_Aplicacao] (',
                     '[Id] INTEGER NOT NULL Primary Key autoincrement,',
                     '[Descricao] VARCHAR(200));'
 
-            ].join('')
+                ].join('')
                 ,[],
                 function ok() {console.info('motivo_aplicacao');},
                 function err(a,err) {console.warn(err);}
@@ -98,17 +114,6 @@ function DAO() {
 
             tx.executeSql(
                 [
-                    'INSERT INTO [Motivo_Medicao] (Descricao) ',
-                    'SELECT (?) as Descricao UNION SELECT (?) UNION SELECT (?) UNION SELECT (?) UNION SELECT (?) UNION SELECT (?)'
-                ].join('')
-                ,['Jejum','Café da Manhã','Almoço'
-                    ,'Café da tarde','Janta', 'Mal Estar'],
-                function ok() {console.info('insert motivo_medicao');},
-                function err(a,err) {console.warn(err);}
-            );
-
-            tx.executeSql(
-                [
                     'CREATE TABLE [Paciente] (',
                     '[Id] Integer NOT NULL Primary Key autoincrement,',
                     '[Nome] VARCHAR(50) NOT NULL,',
@@ -153,6 +158,39 @@ function DAO() {
                 function err(a,err) {console.warn(err);}
             );
 
+            tx.executeSql(
+                [
+                    'INSERT INTO [Tipo_Insulina] (Descricao) ',
+                    'SELECT (?) as Descricao UNION SELECT (?) UNION SELECT (?) UNION SELECT (?) UNION SELECT (?) UNION SELECT (?)'
+                ].join('')
+                ,['Jejum','Café da Manhã','Almoço'
+                    ,'Café da tarde','Janta', 'Mal Estar'],
+                function ok() {console.info('insert Tipo_Insulina');},
+                function err(a,err) {console.warn(err);}
+            );
+
+            tx.executeSql(
+                [
+                    'INSERT INTO [Motivo_Medicao] (Descricao) ',
+                    'SELECT (?) as Descricao UNION SELECT (?) UNION SELECT (?) UNION SELECT (?) UNION SELECT (?) UNION SELECT (?)'
+                ].join('')
+                ,['Jejum','Café da Manhã','Almoço'
+                    ,'Café da tarde','Janta', 'Mal Estar'],
+                function ok() {console.info('insert motivo_medicao');},
+                function err(a,err) {console.warn(err);}
+            );
+
+            tx.executeSql(
+                [
+                    'INSERT INTO [Motivo_Aplicacao] (Descricao) ',
+                    'SELECT (?) as Descricao UNION SELECT (?) UNION SELECT (?) UNION SELECT (?) UNION SELECT (?) UNION SELECT (?)'
+                ].join('')
+                ,['Jejum','Café da Manhã','Almoço'
+                    ,'Café da tarde','Janta', 'Mal Estar'],
+                function ok() {console.info('insert motivo_aplicacao');},
+                function err(a,err) {console.warn(err);}
+            );
+
         });
     };
 
@@ -163,22 +201,75 @@ function DAO() {
             tx.executeSql('DROP TABLE [Medicao]');
             tx.executeSql('DROP TABLE [Motivo_Medicao]');
             tx.executeSql('DROP TABLE [Paciente]');
+            tx.executeSql('DROP TABLE [Tempo]');
             tx.executeSql('DROP TABLE [Tipo_Insulina]');
         });
     };
 
-    this.save = function () {
+    this.save = function (item, callback) {
+        if (this.exist(item)) {
+            this.update(item, callback);
+        } else {
+            this.insert(item,callback);
+        }
+    };
+    //DAO.insert(
+    //    {
+    //        Table:'motivo_medicao',
+    //        Fields:['Descricao'],
+    //        Values: ['TESTE']
+    //    }
+    //    ,function (res) {
+    //        if (rowsAffected == 1) {
+    //            //alert SUCESSO
+    //            console.info('ID = ' + res.insertId)
+    //        }
+    //    });
+    this.insert = function (item, callback) {
         this.db.transaction(function (tx) {
-            tx.executeSql()
-        })
+            var params = [];
+            for (var i = 0; i < item.Fields.length; i++) {
+             params.push('?');
+            }
+            console.info(item);
+
+            console.log('INSERT INTO ' + item.Table + '(' + item.Fields.join(', ') + ') VALUES (' + params.join(',') + ')');
+
+            tx.executeSql('INSERT INTO ' + item.Table + '(' + item.Fields.join(', ') + ') VALUES (' + params.join(',') + ')',
+
+                item.Values, function(tx, res) { callback(res); } , function (tx, err) { console.warn(err);});
+        });
     };
 
-    this.insert = function () {
-
-    };
-
-    this.update = function () {
-
+    //DAO.update(
+    //    {
+    //        Table:'motivo_medicao',
+    //        Fields:['Descricao'],
+    //        Id: 7,
+    //        Values: ['TESTE']
+    //    }
+    //    ,function (res) {
+    //        //rowsAffected: 1, insertId: ?
+    //        console.info(res);
+    //        if (res.rowsAffected == 1) {
+    //            //alert SUCESSO
+    //            console.warn('sucesso');
+    //        } else {
+    //            //alert FALHA
+    //        }
+    //    });
+    this.update = function (item, callback) {
+        if (typeof(item) !== 'object' || typeof(callback) !== 'function' )
+            throw new TypeError('Need parse an object and a function.');
+        this.db.transaction(function (tx) {
+            tx.executeSql(
+                'UPDATE ' + item.Table + ' SET ' + item.Fields.join(' = ?, ') + '=? WHERE Id =' + item.Id
+                ,item.Values,
+                function (tx, res) {
+                    callback(res);
+                }, function (tx, err) { console.warn(err); }
+            );
+        });
     };
 
     this.delete = function (db) {
@@ -189,25 +280,59 @@ function DAO() {
 
     };
 
-    this.exist = function(table, Id) {
-        var exist;
+    //{
+    // Table: '',
+    // Id: 1
+    // },
+    // function (res)
+    // {
+    //      if(res) console.info('existe');
+    // }
+    this.exist = function(item, callback) {
+        if (typeof(item) !== 'object' || typeof(callback) !== 'function' )
+            throw new TypeError('Need parse an object and a function.');
+
         this.db.transaction(
             function (tx) {
                 tx.executeSql(
-                    'SELECT COUNT(*)>0 as exist FROM ' + table + ' WHERE id = '+ Id, []
+                    'SELECT COUNT(*)>0 as exist FROM ' + item.Table + ' WHERE id = '+ item.Id, []
                     , function (tx, res) {
-                        exist = res.rows.item(0).exist;
-                        return exist;
+                        callback(res.rows.item(0).exist);
                     }
                     , function (tx, err) { console.warn(err);}
                 );
             }
         );
-        return exist;
+    }
+
+    this.validar = function (item, callback, needValues) {
+        if (typeof(item) !== 'object' || typeof(callback) !== 'function' )
+            throw new TypeError('Need parse an object and a function.');
+        if (item == null || item === 'undefined' || callback === 'undefined')
+            throw new SyntaxError('Params can\'nt be null');
+        if (item.Table === 'undefined' || item.Id === 'undefined')
+            return false;
+        if (needValues) {
+            if (item.Fields === 'undefined' || item.Values === 'undefined')
+                return false;
+            if (!Array.isArray(item.Fields) || !Array.isArray(item.Fields))
+                return false;
+        }
+        return true;
     }
 };
 DAO.$inject = [];
 
+//insert into TEMPO (data, observacao)
+//select
+//(strftime('%m-%d-%Y','2014-11-21T09:00:00.037Z')) as data
+//    ,('teste 1') as observacao
+//union
+//select (strftime('%m-%d-%Y','2014-11-22T09:00:00.037Z')),('teste 2') union
+//select (strftime('%m-%d-%Y','2014-11-23T09:00:00.037Z')),('teste 3') union
+//select (strftime('%m-%d-%Y','2014-11-24T10:00:00.037Z')),('teste 4');
+
+//???
 function DAOFactory($http) {
     return{
         geoCode: function (lat, long) {
