@@ -18,6 +18,8 @@
               <!--<input type="text" placeholder="Observacao" ng-model="glicemia.observacao">-->
           <!--</label>-->
       </div>
+      <br />
+      <span class="center-block text-center item item-positive" ng-if="media">{{media}}</span>
       <div class="row aligner">
           <div class="aligner-item">
               <div class="col col-10">
@@ -33,7 +35,7 @@
           </div>
       </div>
       <div class="row center-block text-center">
-          <label ng-if="info">t{{info}}</label>
+          <label ng-if="info">{{info}}</label>
       </div>
 
   </ion-content>

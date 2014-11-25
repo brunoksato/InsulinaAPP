@@ -208,6 +208,39 @@ function DAO() {
         });
     };
 
+    //Desenvolvendo
+    //Retorna Array : Object
+    // Call
+    // {Table,Fields,[Id,Where+Values]}, callback([])
+    this.select = function (item, callback) {
+        this.db.transaction(function (tx) {
+            var where = '';
+            if (item.Id) search.f = " WHERE Id = " + item.Id;
+            if (item.Where) {
+                where = ' WHERE ' + item.Where;
+            }
+            console.warn('SELECT ' + item.Fields.join(', ') + ' FROM ' + item.Table + where,item.Values);
+            tx.executeSql('SELECT ' + item.Fields.join(', ') + ' FROM ' + item.Table + where,item.Values,
+                function (tx, res) {
+                    if (res.rows.length > 0) {
+                        var x = res.rows.item(0);
+                        var retorno = [];
+                        for (var i = 0; i < res.rows.length; i++) {
+
+                            retorno.push(res.rows.item(i).clone());
+                        }
+                        callback(retorno);
+                    } else {
+                        callback(null);
+                    }
+                },
+                function (tx, err) {
+                    console.warn(err);
+                }
+            )
+        });
+    }
+
     this.save = function (item, callback) {
         this.exist(item, function (res,DAO) {
             if (res) {
@@ -234,7 +267,7 @@ function DAO() {
         this.db.transaction(function (tx) {
             var params = [];
             for (var i = 0; i < item.Fields.length; i++) {
-             params.push('?');
+                params.push('?');
             }
 
             tx.executeSql('INSERT INTO ' + item.Table + '(' + item.Fields.join(', ') + ') VALUES (' + params.join(',') + ')',

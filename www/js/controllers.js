@@ -111,7 +111,7 @@ function PacienteCtrl($scope, DAO, service) {
 
 function GlicemiaCtrl($scope, DAO, service) {
     $scope.motivos = motivos;
-    $scope.glicemia = {motivo:{}};
+    $scope.glicemia = {motivo:{Id: 0}};
     $scope.info = '';
 
     $scope.clear = function () {
@@ -120,6 +120,19 @@ function GlicemiaCtrl($scope, DAO, service) {
     };
 
     $scope.salvar = function () {
+        if (!$scope.glicemia.motivo.id) {
+            service.alert('Selecione um motivo', function (tx) {
+                $scope.info = tx;
+            });
+            return;
+        }
+        if ($scope.glicemia.valor > 200 || $scope.glicemia.valor < 30) {
+            service.alert('Valores incorretos!', function (tx) {
+                $scope.info = tx;
+            });
+            return;
+        }
+
         var agora = new Date();
         DAO.insert(
             {
@@ -145,24 +158,27 @@ function GlicemiaCtrl($scope, DAO, service) {
                 })
             }
         );
-        //DAO.db.transaction(function (tx) {
-        //    var agora = new Date();
-        //    tx.executeSql("INSERT INTO medicao(Data,Valor,Id_MotivoMedicao,Id_Paciente) Values (?,?,?,?)",[
-        //        agora.toISOString(),
-        //        $scope.glicemia.valor,
-        //        $scope.glicemia.motivo.id,
-        //        1
-        //    ], function (tx, results) {
-        //        console.log('salvo com sucesso!');
-        //
-        //        $scope.$apply(function () {
-        //            $scope.clear();
-        //        })
-        //    }, function (tx,err) {
-        //        console.log(err);
-        //    });
-        //});
+
+        $scope.getMedia();
+
     };
+
+    $scope.getMedia = function () {
+        DAO.select(
+            {
+                Table: 'Medicao',
+                Fields: ['AVG(Valor) as Media'],
+                Where: ['strftime(\'%m\', Data) = strftime(\'%m\', \'now\')']
+            },
+            function (res) {
+                if (res.length > 0) {
+                    if (res[0].Media) $scope.media = 'Média: ' + res[0].Media;
+                }
+            }
+        );
+    }
+
+    $scope.getMedia();
 }
 
 function InsulinaRapidaCtrl($scope,DAO) {
@@ -430,7 +446,7 @@ function EditarCtrl($scope, DAO, service) {
                 }
 
                 $scope.$apply(function () {
-                    $scope.show = true;
+                    //$scope.show = true;
                 });
 
             },
@@ -446,9 +462,9 @@ function EditarCtrl($scope, DAO, service) {
         for (var i = 0 ; i < $scope.editar.length; i++) {
             if (item.Id !== $scope.editar[i].Id) {
                 $scope.editar[i].$edit = false;
-                if ($scope.editar[i].$change) {
-                    $scope.salve($scope.editar[i]);
-                }
+                //if ($scope.editar[i].$change) {
+                //    $scope.salve($scope.editar[i]);
+                //}
             }
         }
     }
@@ -457,31 +473,44 @@ function EditarCtrl($scope, DAO, service) {
         for (var i = 0 ; i < $scope.editar.length; i++) {
             if ($scope.editar[i].$change) {
                 $scope.salve($scope.editar[i]);
-                $scope.editar[i].$edit = false;
             }
         }
     }
 
     $scope.salve = function (item) {
         item.$change = false;
-        DAO.db.transaction(
-            function (tx) {
-                tx.executeSql(
-                    'UPDATE [medicao] SET Valor = ? , id_MotivoMedicao = ? WHERE Id = ? ',
-                    [
-                        item.Valor
-                        ,item.motivo.Id
-                        ,item.Id
-                    ]
-                    ,function (tx, res) {
-                        console.info('Salvo');
-                    }
-                    ,function (tx, err) {
-                        console.warn(err);
-                    }
-                );
-            }
-        );
+        DAO.update(
+            {
+                Table: 'Medicao',
+                Fields: ['Valor','id_MotivoMedicao'],
+                Values: [item.Valor ,item.motivo.Id],
+                Id: item.Id
+            },
+            function (res) {
+                if (res.rowsAffected === 1) {
+                    service.alert('Sucesso', function (tx) {
+
+                    })
+                }
+            });
+        //DAO.db.transaction(
+        //    function (tx) {
+        //        tx.executeSql(
+        //            'UPDATE [medicao] SET Valor = ? , id_MotivoMedicao = ? WHERE Id = ? ',
+        //            [
+        //                item.Valor
+        //                ,item.motivo.Id
+        //                ,item.Id
+        //            ]
+        //            ,function (tx, res) {
+        //                console.info('Salvo');
+        //            }
+        //            ,function (tx, err) {
+        //                console.warn(err);
+        //            }
+        //        );
+        //    }
+        //);
     }
 }
 
@@ -523,14 +552,15 @@ function ObservacaoCtrl($scope, DAO, service) {
             },
             function (res) {
                 try {
-                    if (res.insertId) {
-                        item.Id = res.insertId;
+                    if (res.rowsAffected > 0) {
+                        service.alert('Salvo', function (tx) {
+                            $scope.info = tx;
+                        });
+                        if (res.insertId) {
+                            item.Id = res.insertId;
+                        }
                     }
-                } catch(e) {
-
-                }
-
-                console.info(res);
+                } catch(e) {} //retorna exception no insertId quando UPDATE
             }
         )
     }

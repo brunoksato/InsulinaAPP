@@ -8,11 +8,15 @@
             <b class="text-center center-block">{{ hoje | date : 'dd/MM/yyyy'}}</b>
             <table class="table table-hover table-striped table-responsive" style="border: 1px solid #eee">
                 <tr>
+                    <th width="30px"></th>
                     <th>Data</th>
                     <th width="70px">Glicemia</th>
                     <th>Descricao</th>
                 </tr>
-                <tr ng-repeat="item in editar" ng-click="select(item);" ng-class="{'selected' : item.$edit}">
+                <tr ng-repeat="item in editar"  ng-class="{'selected' : item.$edit}">
+                    <td ng-click="select(item);">
+                        <input type="checkbox" ng-model="item.$edit">
+                    </td>
                     <td>
                         {{item.Data | date : 'HH:mm'}}
                     </td>

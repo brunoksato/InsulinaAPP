@@ -5,13 +5,16 @@ angular.module('service', ['ionic'])
     .service('service',service);
 
 
-function service($timeout, DAO) {
+function service($timeout) {
     this.alert = function(txt, field) {
         field(txt);
         $timeout(
             function () {
-                field('');
-            }, 2000
+                $timeout(function () {
+                    field('');
+                }, 1500)
+                field(txt);
+            }, 100
         )
     }
 
@@ -28,5 +31,12 @@ function service($timeout, DAO) {
         { valor: 12 ,media: 295 }
     ];
 
-    this.aplicacao = 0;
+
+    this.glicemiaAtual = 0;
+
+    this.calculo = function(glicemiaIdeal, fator_correcao) {
+        //Criança 1:20
+        //Adulto  1:15
+        return (this.glicemiaAtual - glicemiaIdeal) / fator_correcao;
+    }
 }
